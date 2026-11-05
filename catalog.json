@@ -1,0 +1,342 @@
+[
+  {
+    "path": "scripts/diagnostico/instance-info.sql",
+    "title": "Informações da instância",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Versão e uptime são informativos, sem julgamento automático de configuração.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-sys-info-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/database-inventory.sql",
+    "title": "Inventário dos bancos",
+    "context": "qualquer banco",
+    "permissions": "Visibilidade dos metadados consultados; resultados podem ser parciais.",
+    "notes": "Recovery model, owner e compatibilidade exigem avaliação do contexto; não são classificados como bons ou ruins.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-databases-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/database-files.sql",
+    "title": "Arquivos e crescimento dos bancos",
+    "context": "qualquer banco",
+    "permissions": "Visibilidade dos metadados consultados; resultados podem ser parciais.",
+    "notes": "Tamanho alocado, não espaço efetivamente ocupado; FILESTREAM exige medição específica.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/service-status.sql",
+    "title": "Estado dos serviços",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER SECURITY STATE (2022+).",
+    "notes": "A saída contém contas de serviço e caminhos do servidor consultado.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-server-services-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/blocked-sessions.sql",
+    "title": "Sessões bloqueadas e bloqueadores",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Inclui bloqueadores sem request ativo. IDs negativos têm significado especial; não representam logins comuns.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/active-requests.sql",
+    "title": "Requests em execução",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Texto SQL é opcional e pode conter dados pessoais ou segredos. Percentual de conclusão existe apenas para determinadas operações.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/session-resources.sql",
+    "title": "Recursos por sessão",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Contadores acumulados da sessão; memory_usage é memória associada à sessão, não memória total das consultas.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/session-locks.sql",
+    "title": "Locks no banco selecionado",
+    "context": "banco a inspecionar",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Mantém IDs de recursos sem presumir que todo lock seja um HoBT. IDs negativos de sessão são preservados.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql"
+  },
+  {
+    "path": "scripts/diagnostico/suspect-pages.sql",
+    "title": "Páginas suspeitas registradas",
+    "context": "qualquer banco",
+    "permissions": "SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.",
+    "notes": "Ausência de registros não comprova integridade; não executa DBCC nem reparos.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/manage-the-suspect-pages-table-sql-server"
+  },
+  {
+    "path": "scripts/diagnostico/tempdb-space.sql",
+    "title": "Uso dos arquivos de dados de tempdb",
+    "context": "tempdb",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "A conexão deve selecionar tempdb. Valores reservados não equivalem a bytes usados por registros.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-file-space-usage-transact-sql"
+  },
+  {
+    "path": "scripts/performance/file-io.sql",
+    "title": "I/O acumulado por arquivo",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Contadores acumulados, sem amostragem por intervalo. Média não descreve a distribuição de latências.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql"
+  },
+  {
+    "path": "scripts/performance/scheduler-pressure.sql",
+    "title": "Filas dos schedulers",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Snapshot dos schedulers visíveis e online; analisar amostras antes de concluir saturação.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-schedulers-transact-sql"
+  },
+  {
+    "path": "scripts/performance/procedure-statistics.sql",
+    "title": "Estatísticas de procedures em cache",
+    "context": "banco a inspecionar",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Uma linha por plano em cache. Reinícios, recompilações e expulsão do cache mudam a janela dos contadores.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql"
+  },
+  {
+    "path": "scripts/performance/trigger-statistics.sql",
+    "title": "Estatísticas de triggers em cache",
+    "context": "banco a inspecionar",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Não inventaria triggers ausentes do cache; nenhuma execução de trigger é disparada.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql"
+  },
+  {
+    "path": "scripts/performance/top-query-cpu.sql",
+    "title": "Consultas em cache por cpu",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Contadores do plano em cache, não histórico permanente. Texto SQL pode conter valores sensíveis; habilitação opcional.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql"
+  },
+  {
+    "path": "scripts/performance/top-query-logical-reads.sql",
+    "title": "Consultas em cache por logical-reads",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Contadores do plano em cache, não histórico permanente. Texto SQL pode conter valores sensíveis; habilitação opcional.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql"
+  },
+  {
+    "path": "scripts/performance/memory-configuration.sql",
+    "title": "Configuração e estado da memória",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Não calcula um valor ideal nem executa reconfiguração. Há consumidores de memória fora do limite max server memory.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-process-memory-transact-sql"
+  },
+  {
+    "path": "scripts/performance/wait-statistics.sql",
+    "title": "Esperas acumuladas da instância",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Não limpa contadores nem exclui categorias por heurística. Esperas de background podem dominar o ranking.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql"
+  },
+  {
+    "path": "scripts/indices-e-estatisticas/table-space.sql",
+    "title": "Espaço de tabelas em disco",
+    "context": "banco a inspecionar",
+    "permissions": "VIEW DATABASE STATE e VIEW DEFINITION (2016–2019); VIEW DATABASE PERFORMANCE STATE e VIEW SECURITY DEFINITION (2022+).",
+    "notes": "Linhas aproximadas contadas somente no heap/clustered; espaço inclui índices. Não cobre memória de tabelas memory-optimized nem arquivos FILESTREAM externos.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql"
+  },
+  {
+    "path": "scripts/indices-e-estatisticas/index-inventory.sql",
+    "title": "Inventário de índices e data spaces",
+    "context": "banco a inspecionar",
+    "permissions": "Visibilidade dos metadados consultados; resultados podem ser parciais.",
+    "notes": "Data space pode ser filegroup ou partition scheme; não associa todos os arquivos do filegroup a um índice.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql"
+  },
+  {
+    "path": "scripts/indices-e-estatisticas/index-usage.sql",
+    "title": "Contadores de uso de índices",
+    "context": "banco a inspecionar",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "NULL significa ausência de registro na DMV; não é prova de índice inútil. Contadores são reiniciáveis e não medem linhas alteradas.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-index-usage-stats-transact-sql"
+  },
+  {
+    "path": "scripts/indices-e-estatisticas/missing-index-estimates.sql",
+    "title": "Estimativas de índices ausentes",
+    "context": "banco a inspecionar",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Sugestões do otimizador são incompletas e não justificam criar índices automaticamente; não gera DDL.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql"
+  },
+  {
+    "path": "scripts/indices-e-estatisticas/statistics-properties.sql",
+    "title": "Propriedades das estatísticas",
+    "context": "banco a inspecionar",
+    "permissions": "Permissão para consultar metadados e estatísticas dos objetos; ver referência.",
+    "notes": "NULL pode representar estatística sem blob ou falta de visibilidade; idade sozinha não determina necessidade de atualização.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-stats-properties-transact-sql"
+  },
+  {
+    "path": "scripts/backup-e-restauracao/latest-backups.sql",
+    "title": "Últimos backups de cada tipo",
+    "context": "qualquer banco",
+    "permissions": "SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.",
+    "notes": "Histórico local pode ter sido removido ou estar em outra réplica. Não comprova restauração nem cobertura da cadeia de logs.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/backupset-transact-sql"
+  },
+  {
+    "path": "scripts/alta-disponibilidade/replica-status.sql",
+    "title": "Estado das réplicas de bancos",
+    "context": "instância com Always On habilitado",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).",
+    "notes": "Em secundária a visibilidade é principalmente local; resultado vazio não comprova saúde. Valores de fila são KB e taxas KB/s.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-hadr-database-replica-states-transact-sql"
+  },
+  {
+    "path": "scripts/seguranca/sysadmin-members.sql",
+    "title": "Membros diretos de sysadmin",
+    "context": "qualquer banco",
+    "permissions": "Visibilidade de server principals e role memberships; ver referência.",
+    "notes": "Não expande membros de grupos Windows nem resolve permissões efetivas de cada identidade.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-server-role-members-transact-sql"
+  },
+  {
+    "path": "scripts/seguranca/database-permissions.sql",
+    "title": "Permissões explícitas no banco",
+    "context": "banco a inspecionar",
+    "permissions": "Visibilidade dos metadados consultados; resultados podem ser parciais.",
+    "notes": "Não calcula permissões efetivas ou herança de roles. IDs de securables são preservados para todas as classes.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-database-permissions-transact-sql"
+  },
+  {
+    "path": "scripts/seguranca/orphan-sql-users.sql",
+    "title": "Candidatos a usuários SQL órfãos",
+    "context": "banco de usuário",
+    "permissions": "Visibilidade completa dos logins de SQL Server e dos usuários do banco.",
+    "notes": "Somente autenticação INSTANCE; não inclui usuários contidos. Visibilidade parcial de logins pode gerar falsos positivos.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql"
+  },
+  {
+    "path": "scripts/seguranca/encryption-status.sql",
+    "title": "Estado de criptografia dos bancos",
+    "context": "qualquer banco",
+    "permissions": "VIEW SERVER STATE (2016–2019); VIEW SERVER SECURITY STATE (2022+).",
+    "notes": "A ausência da chave na DMV é mostrada explicitamente; não exporta chaves, hashes de senha ou certificados.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql"
+  },
+  {
+    "path": "scripts/sql-agent/job-status.sql",
+    "title": "Estado e última conclusão dos jobs",
+    "context": "instância com SQL Server Agent",
+    "permissions": "SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.",
+    "notes": "Atividade vem da sessão mais recente do Agent; não comprova que o serviço está ativo neste instante.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/dbo-sysjobactivity-transact-sql"
+  },
+  {
+    "path": "scripts/sql-agent/job-history.sql",
+    "title": "Histórico de conclusões dos jobs",
+    "context": "instância com SQL Server Agent",
+    "permissions": "SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.",
+    "notes": "Duração calculada numericamente, inclusive acima de 24 horas. Datas são horários locais registrados pelo Agent; não há mensagens de erro no resultado.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/dbo-sysjobhistory-transact-sql"
+  },
+  {
+    "path": "examples/pagination.sql",
+    "title": "Paginação com ordenação determinística",
+    "context": "qualquer banco",
+    "permissions": "Conexão ao banco; usa apenas valores sintéticos.",
+    "notes": "A chave de desempate evita ordenação ambígua. Dados reais concorrentes exigem estratégia própria de consistência.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql"
+  },
+  {
+    "path": "examples/distribution-functions.sql",
+    "title": "Distribuição e posição percentual",
+    "context": "qualquer banco",
+    "permissions": "Conexão ao banco; usa apenas valores sintéticos.",
+    "notes": "PERCENT_RANK e CUME_DIST têm comportamentos distintos em empates; nenhuma tabela permanente é criada.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/t-sql/functions/cume-dist-transact-sql"
+  },
+  {
+    "path": "examples/null-predicates.sql",
+    "title": "Predicados para valores NULL",
+    "context": "qualquer banco",
+    "permissions": "Conexão ao banco; usa apenas valores sintéticos.",
+    "notes": "Usa IS NULL e IS NOT NULL; não desativa ANSI_NULLS nem depende de tabela de demonstração.",
+    "status": "static-reviewed",
+    "target": "SQL Server 2016+",
+    "reference": "https://learn.microsoft.com/en-us/sql/t-sql/queries/is-null-transact-sql"
+  }
+]

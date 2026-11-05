@@ -1,0 +1,25 @@
+title = "TSQL Library secret checks"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "tsql-credential-literal"
+description = "Nonempty credential literal, including SQL comments"
+regex = '''(?i)\b(?:password|pwd|secret|accountkey|rmtpassword)\s*=\s*N?\x27([^\x27\r\n]+)\x27'''
+secretGroup = 1
+keywords = ["password", "pwd", "secret", "accountkey", "rmtpassword"]
+
+[[rules]]
+id = "tsql-password-hash"
+description = "Literal password hash"
+regex = '''(?i)\bpassword\s*=\s*(0x[0-9a-f]{16,})'''
+secretGroup = 1
+keywords = ["password"]
+
+[[rules]]
+id = "windows-command-credential"
+description = "Credential passed to cmdkey"
+regex = '''(?i)\bcmdkey\b[^\r\n]*/pass:(\S+)'''
+secretGroup = 1
+keywords = ["cmdkey"]
