@@ -1,0 +1,997 @@
+{
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2005/006-global-trace-flags.sql": {
+    "sha256": "5124fd14ed76c848f6598c6ee3184b0605baac9ec6e1d91ae209225510f3d03d",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2005/008-system-manufacturer.sql": {
+    "sha256": "3a824d81e6df64a09165e2df5b9561b7713012df763c8d2c069d70840047ce57",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2005/009-processor-description.sql": {
+    "sha256": "90cf9a1318d051b56beca1ef54375021daf586b812aa7f0f86dc7a317ec432e5",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2005/012-io-warnings.sql": {
+    "sha256": "b077e7d518cd7fd54f33b414241746deb993f3b100b5e99b1023482564b26a5b",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/databases/sql-server-2005/017-vlf-counts.sql": {
+    "sha256": "f578c67fbd3c3416066de895af66ca8eb54352ce7b8ce09ab0dd80a69a265afc",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: execute_script_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2005/026-cpu-utilization-history.sql": {
+    "sha256": "575ea0ec993d26a2650f433eab6848bc930282e7df6f7da2e494ea18cfa3427f",
+    "expected_findings": [
+      "statement type not allowed: set_local_variable_segment"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2008/006-global-trace-flags.sql": {
+    "sha256": "606f38dd65241ba9466f120ca9a61205530106aeb4c800ced9ef69e649941e2f",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2008/009-system-manufacturer.sql": {
+    "sha256": "947347f68d89094f92b1818d87e4240a5542d85b8c9b11c8ca695f2987d81b97",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2008/010-processor-description.sql": {
+    "sha256": "ac65e944a6e05956d68a7b95c7c469ab5669e21c8cdc6c7941b892e3492eee43",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2008/014-io-warnings.sql": {
+    "sha256": "0947c8bc3a25640d91f6635b5daa9aa41a29fc7c0c06c30b036eaa4e3ca4691d",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/databases/sql-server-2008/019-vlf-counts.sql": {
+    "sha256": "a1282450d15417ea681cbbd5ffc97b4fbabaf6c4625a7ee3ed3fc2c508d3afee",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: execute_script_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2008r2/006-global-trace-flags.sql": {
+    "sha256": "845c966bb4ef1debc55012ea2da07a250426f2ad9807bfbc66518aba9f8f5612",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2008r2/011-system-manufacturer.sql": {
+    "sha256": "b69ac734fe56a315b055dd2e2d3e9278bb44ab6102b8b813039b37876bd2b7d3",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2008r2/012-processor-description.sql": {
+    "sha256": "3167500cdfca48acec540ff2abcbd708ed8143fcc8fb908d548b55c0c76b9f27",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2008r2/018-io-warnings.sql": {
+    "sha256": "aaf353a080551a74045472f2af2f791652bfb32f6b1c7cd72de56addaf84df1f",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/databases/sql-server-2008r2/023-vlf-counts.sql": {
+    "sha256": "81043f43b12408e5eaee792c5e562d5a170c9efaacc1e25f46b07f3b72610641",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: execute_script_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2012/002-core-counts.sql": {
+    "sha256": "0b8b181ee03293ac9851b9ec8323a6a6d297906628538a99cfed8118ec4d52ef",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2012/005-global-trace-flags.sql": {
+    "sha256": "25b69a64ad741f9c1c8ff7f4958b70ffde01799a169618b191a8aa8a9493cc91",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2012/006-ifi-status.sql": {
+    "sha256": "69204bbd23d9687de2acc21ca864b51fcd26805ed2b767a1fbdcb8ea5438fdb8",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2012/019-system-manufacturer.sql": {
+    "sha256": "1c9a68e72702db2db124db9bae997296337dd4bcdc8ea19f2cb564f6fdb41a37",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2012/020-bios-date.sql": {
+    "sha256": "bf38ea56f2f942f1c66f63a8bcdcfe6f1dcec53748490558c4b5926c584da65f",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2012/021-processor-description.sql": {
+    "sha256": "2aa00b6d9d5f08bf24a050e0f61d9407ad4a84984b5da69a38de7f76cd79adf8",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2012/024-tempdb-data-files.sql": {
+    "sha256": "e42ea58fcf8b8496736153fb944bc1a29084ddf8897491f251b5a38c7bb7d4f0",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2012/025-tempdb-data-file-sizes.sql": {
+    "sha256": "11c638c9c9bb3e82ef91c7a99d694683c762e0666a0192209c9b2b230475c87c",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2012/030-io-warnings.sql": {
+    "sha256": "821c0285b1f965076bf06ca193c8c0d81a267c2a5f65c3ba7c0c72e7e87a8b84",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/databases/sql-server-2012/034-vlf-counts.sql": {
+    "sha256": "a103503919a3a830594664042de78daa4896bcb99abadadf59f05cdf06e21961",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: execute_script_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2014/002-core-counts.sql": {
+    "sha256": "6d013161a12a09d2297318a056baafeceb17dea0dbc82b139444a6f6f81b2f28",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2014/005-global-trace-flags.sql": {
+    "sha256": "9a33c4c4801a40273f0640e029bdd9ddd28eee38f51e8d8ccae663f86c1644a4",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2014/006-ifi-status.sql": {
+    "sha256": "bff9deb4ac9a91647ebe58d9b156bb57bd93e7a0b0eb84e249ce042a5a1569af",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2014/019-system-manufacturer.sql": {
+    "sha256": "c63a97c64eea96d2f921b45ecf3f34352bec56dc5c5a8245f0d08e8d23a5e554",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2014/020-bios-date.sql": {
+    "sha256": "080dc1acb884c1d4101f74c8dee108d49fde87878a0946517543f4031cd725df",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2014/021-processor-description.sql": {
+    "sha256": "3bfe4e289eeed1ae98af347a96615373f46b572984395a4779f523f823a5fc60",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2014/024-tempdb-data-files.sql": {
+    "sha256": "bb10c0bee7f9119aa6815a60c065f295b19d13fbcaa2cb4197d7b84ca4faeac7",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2014/025-tempdb-data-file-sizes.sql": {
+    "sha256": "af68a2be014d203bb7123df1cfac3f97e58e3a325422de7e6e4dd4bc471725a9",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2014/030-io-warnings.sql": {
+    "sha256": "65fdd51d52f1c890496a608ce61f07b6240c69086003d5d017c9735560c68278",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/databases/sql-server-2014/034-vlf-counts.sql": {
+    "sha256": "7b5772d3de77afa82c9b90454e0df1a4c8cf738050d87896c7d13e0dfa2d1bfe",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: execute_script_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016/001-version-info.sql": {
+    "sha256": "72eb622c311b81a73e75fe4212caad47f6ae43ebe1b956e513ad30ee580fdf9f",
+    "expected_findings": [
+      "ipv4-literal at line 36",
+      "ipv4-literal at line 37",
+      "ipv4-literal at line 38",
+      "ipv4-literal at line 39",
+      "ipv4-literal at line 40",
+      "ipv4-literal at line 41",
+      "ipv4-literal at line 42"
+    ],
+    "reason": "Upstream version/build numbers in comment-only release tables."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2016/002-core-counts.sql": {
+    "sha256": "9551705cc7eb955ab243b27cb74bddb5bd49fb96774f5742145aa23b6ce57e56",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016/005-global-trace-flags.sql": {
+    "sha256": "2cd3b27fed3179cce0d0e7f43e84438a7ba08d2809da4707389984c4981f30bb",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2016/014-memory-snapshot.sql": {
+    "sha256": "20fda80a031f3c6ec6f0b1e4502609252b95797fde0b6b56042e3d75f174cc59",
+    "expected_findings": [
+      "statement type not allowed: set_local_variable_segment"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016/018-system-manufacturer.sql": {
+    "sha256": "761a5ba4c9d25712f36c838acfa68dbca4c255192ea59823464502fd1de26658",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016/019-bios-date.sql": {
+    "sha256": "5dfb6eced1e7d3050a397994f794361f1680d1a67479b6f91672fce584e919fe",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016/020-processor-description.sql": {
+    "sha256": "3e7bf37a8e29fad593b5e655d96b1647ac931af5364e52c49767c8d58e4b1370",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2016/023-tempdb-data-files.sql": {
+    "sha256": "1e0babd92e4d1d9a30a53393e1817e8b135d15015f6eab060913cc57732f4a53",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2016/024-tempdb-data-file-sizes.sql": {
+    "sha256": "3a2c410267f6b1bf40d61c9a4580621b42d039dfae505f8e592a3d40446fe5cf",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2016/029-io-warnings.sql": {
+    "sha256": "03d4bbfb12c9399209285cc58285f4939ba4f080e671db1e6a8afacd653a9969",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/databases/sql-server-2016/033-vlf-counts.sql": {
+    "sha256": "616e7617d466dce7d6da63d42b03463268a66dcaa10e2dbdce85f8e9c1157435",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: execute_script_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2016sp2/002-core-counts.sql": {
+    "sha256": "e5533d9465c20c5a7a28e6cecb5ea09052bc5606e7066ceb9441774e498a38cf",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016sp2/005-global-trace-flags.sql": {
+    "sha256": "993b2a30a99e3dbe6cf4033f65bbd7965078143f0b61da4e9de57bbcbe9300db",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2016sp2/014-memory-snapshot.sql": {
+    "sha256": "37ec5eebe8bae7f8b7b04310f6e2db7abbc455fa86727e58a64ac918732d7f64",
+    "expected_findings": [
+      "statement type not allowed: set_local_variable_segment"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016sp2/018-system-manufacturer.sql": {
+    "sha256": "c0f07121586e0d84120d6f728e09faf88ce1133c23b8bcbea2aa39649daace24",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016sp2/019-bios-date.sql": {
+    "sha256": "2de0354b2fbcea2d56f3542e6b0649ed1dd0255d1421ef89dfadb455668e8c12",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2016sp2/020-processor-description.sql": {
+    "sha256": "906f2a4e44ae0122fa56c3c2ec38f425b3ea774252f6e76013210785cd291bbb",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2016sp2/023-tempdb-data-files.sql": {
+    "sha256": "3d9a3e2b5584988e13f20b31916d950378c89c04d0c847152e87a396c08fcdce",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2016sp2/024-tempdb-data-file-sizes.sql": {
+    "sha256": "73760c6e9e0d639a905cbe4339b584bbf29da1dfc1bef3bb37e07eeb06f4ae61",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2016sp2/029-io-warnings.sql": {
+    "sha256": "4bab27a48520c73ff8efb4d2d8d82f879edeb2e81a72aa6d19a64934756e3a33",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2016sp2/051-long-buffer-pool-scans.sql": {
+    "sha256": "c561e6e2bb76cdcd78aa6fc75ef485e4df3ecf8ffaaac5798ef575423cb7a421",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2017/001-version-info.sql": {
+    "sha256": "8023cd699d03a7a75d260d6a748cef0d2ccfa0d73e6260ba91975e7d3864baaa",
+    "expected_findings": [
+      "ipv4-literal at line 36",
+      "ipv4-literal at line 37",
+      "ipv4-literal at line 38",
+      "ipv4-literal at line 39",
+      "ipv4-literal at line 40",
+      "ipv4-literal at line 41",
+      "ipv4-literal at line 42",
+      "ipv4-literal at line 43",
+      "ipv4-literal at line 44"
+    ],
+    "reason": "Upstream version/build numbers in comment-only release tables."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2017/002-core-counts.sql": {
+    "sha256": "e4f1df6a0083d42525a75ae72fe44407bffbb92d6134bc9768b94d211813245d",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2017/005-global-trace-flags.sql": {
+    "sha256": "95082e092f99fd6fe14055e81307ba414336e13445808c1a39f8ebe36e279f8c",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2017/014-memory-snapshot.sql": {
+    "sha256": "0b1be8bb891998e7fe8ca9d92fdfdb8d5804d37c589cdbd76629753ce9969c26",
+    "expected_findings": [
+      "statement type not allowed: set_local_variable_segment"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2017/018-system-manufacturer.sql": {
+    "sha256": "8f5eda53d77ddf12b57cf27f40c90a8299cdaaa27dc0df386e87a5185523ed3a",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2017/019-bios-date.sql": {
+    "sha256": "46c82a3218cff5ed003c19a5cdf5d8a8b4312ca6cc7cf991117f31fa0add2600",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2017/020-processor-description.sql": {
+    "sha256": "3f9501616dfeffd340be6f122412276911c614b781ba35ec23c480d1bec68c26",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2017/023-tempdb-data-files.sql": {
+    "sha256": "06b28622f89edb23fc01e7208cc14c5531d2961f946d1ce3df564fc9c9fdc4c9",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2017/024-tempdb-data-file-sizes.sql": {
+    "sha256": "abfcb845fd689f97ab5fbdfaff3aca4652875c60dad91f917b17edb0fe902c7e",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2017/030-io-warnings.sql": {
+    "sha256": "8104b041e236d4676e50bee1fcd1056746bc9aa3829cfb9c933d9fffb4a6a1d2",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2017/052-long-buffer-pool-scans.sql": {
+    "sha256": "8a7b607778b0b2e352aed3b95854bf5e0cef82088ae9c6ebbaa49078085a187e",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2019/002-core-counts.sql": {
+    "sha256": "28e12b7690692ba3de0febdd2be90b5a3c8b2642d6ef1dadbf655a5974fb20e1",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2019/005-global-trace-flags.sql": {
+    "sha256": "bd0206def0f49c51d063caacf4cc3efae5c535dbfad4d332f70ad86715c134ef",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2019/014-memory-snapshot.sql": {
+    "sha256": "179b67fac1b1e1266f246467f158e7fbf35050d9bffba267569df198e4f8b147",
+    "expected_findings": [
+      "statement type not allowed: set_local_variable_segment"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2019/018-system-manufacturer.sql": {
+    "sha256": "7894110bbc8d87024a122991a599a3eac60e7e0793099201d20cd0cb954f8415",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2019/019-bios-date.sql": {
+    "sha256": "8dcf9ed4c4f680901eb1d8c2fb7965adef79359c52b77596245f4a51f02980d0",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2019/020-processor-description.sql": {
+    "sha256": "ffcf581b639194e7155b1839919031b5071cc1b92bd5652cf97bb5a70c35cebc",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/integrity-and-logs/sql-server-2019/023-error-log-entries.sql": {
+    "sha256": "bab6ac0a557c0009b171c5723fdaff2e902dd01f6ba946725c10ff9c1613a284",
+    "expected_findings": [
+      "statement type not allowed: drop_table_statement",
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: while_statement",
+      "statement type not allowed: begin_end_block",
+      "statement type not allowed: set_local_variable_segment",
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2019/024-tempdb-data-files.sql": {
+    "sha256": "e7066683f13b9384e83486c0e43bdd0abf9b97210e3dd02f3363d36eb1a97d15",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2019/025-tempdb-data-file-sizes.sql": {
+    "sha256": "46ab455e8106540222ba6d43d1143329474001218199cef5dbb24d4c76c48570",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2019/031-io-warnings.sql": {
+    "sha256": "e5e5b6963af0e3946301abdfd19de3f8c67713dff4414ea3f7b422bfc50f9026",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2019/054-long-buffer-pool-scans.sql": {
+    "sha256": "5b2ca423f1ebc6f2612dcb4c393c3995e74011bb138d2230ac9f423b7fe99dd5",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2022/001-version-info.sql": {
+    "sha256": "787f726a44282d27ae4a30710eb6824866bf7dd11dde5c124eabe71c5e00928d",
+    "expected_findings": [
+      "ipv4-literal at line 36",
+      "ipv4-literal at line 37",
+      "ipv4-literal at line 38",
+      "ipv4-literal at line 39"
+    ],
+    "reason": "Upstream version/build numbers in comment-only release tables."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2022/002-core-counts.sql": {
+    "sha256": "4bd927eed67abb7eb36218ff7a61c87bbb003035ea05924d7eaa93bde62ff51c",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2022/005-global-trace-flags.sql": {
+    "sha256": "29a7591713f7ac727b1b0e93460aad716a08b213d60b77d66561e625eef043d6",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2022/015-memory-snapshot.sql": {
+    "sha256": "97a9811ff1f748a1b735fb56ca656764d75b6d86f2e6f96ab70a67995bb6fd4b",
+    "expected_findings": [
+      "statement type not allowed: set_local_variable_segment"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2022/019-system-manufacturer.sql": {
+    "sha256": "18265537415b2d876a1d27600e2e9c200d8fc799383247bd43d3745fa0163593",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2022/020-bios-date.sql": {
+    "sha256": "e4940d5066b1295f36d02f352dd4b9dd48a08db28dce6c89063d4457be9cbd14",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2022/021-processor-description.sql": {
+    "sha256": "fc2a6423009871bc918a5f5037f0133c384da693ab6377d4e9101beb66c19a0d",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2022/022-cpu-vectorization-level.sql": {
+    "sha256": "94057ad2822d28894144f033fd8cad8b3c427d14c47774e0841b35deea58aeb1",
+    "expected_findings": [
+      "statement type not allowed: begin_end_block",
+      "statement type not allowed: drop_table_statement",
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/integrity-and-logs/sql-server-2022/025-error-log-entries.sql": {
+    "sha256": "be4072d44035c11220ba173ef2e2679969c9687946e44d68d30401e44a7a01b5",
+    "expected_findings": [
+      "statement type not allowed: drop_table_statement",
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: while_statement",
+      "statement type not allowed: begin_end_block",
+      "statement type not allowed: set_local_variable_segment",
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2022/026-tempdb-data-files.sql": {
+    "sha256": "c9d7d5b25573c44af0d1efbcc00da507d112562843836c31fade7b720ea38666",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2022/027-tempdb-data-file-sizes.sql": {
+    "sha256": "45f74cc4bea9a81f5f73cc5286e9cd758d87d3e9a1d01ec39402f4a034ca4bbd",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2022/033-io-warnings.sql": {
+    "sha256": "93d43bcbb59c2454af2213bd552d1b006dbd9b49a1b939d52981d75c20564cb5",
+    "expected_findings": [
+      "statement type not allowed: drop_table_statement",
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2022/056-long-buffer-pool-scans.sql": {
+    "sha256": "b1cd394586305073710514a83fb04948c7dc7001029b8ba51f926fb6ccf53f5d",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2025/001-version-info.sql": {
+    "sha256": "9ea57a7fc6c5b90ce0db4a3b8f1fd137af58cc4da95db40b2d38d901cdc18472",
+    "expected_findings": [
+      "ipv4-literal at line 33",
+      "ipv4-literal at line 34"
+    ],
+    "reason": "Upstream version/build numbers in comment-only release tables."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2025/002-core-counts.sql": {
+    "sha256": "593d4dd82df39d4621e04a8cd7f7df688bf943bf30ded297d15b2fc9ef7d7716",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2025/005-global-trace-flags.sql": {
+    "sha256": "eb2f53f785fa32309ee4a214ec79bc531e5574e933a5da859e5873dd70436bdf",
+    "expected_findings": [
+      "statement type not allowed: dbcc_statement",
+      "operation not allowed in this collection: DBCC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2025/015-memory-snapshot.sql": {
+    "sha256": "6b8d6111f8c1b3a2a167e003ce1d51e231244dfd8aa58edf3bc598c53614dbcf",
+    "expected_findings": [
+      "statement type not allowed: set_local_variable_segment"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2025/019-system-manufacturer.sql": {
+    "sha256": "16d40c103bb4ff965797860d1e897899b810b6bbceaa049c1dbeef3f739621f5",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2025/020-bios-date.sql": {
+    "sha256": "1ee6a3dd6b0ea6ea70e6b2213b9f4d54b920a94dcef3b07b7d315adccf09bef1",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/instance/sql-server-2025/021-processor-description.sql": {
+    "sha256": "f0f4827e7dad9ef4d9eeb9f54a182fd1d32cd3cb82c4919798613a439477593c",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/cpu/sql-server-2025/022-cpu-vectorization-level.sql": {
+    "sha256": "13cbf3c3b931e293ef3f868cda04ca544907f902f22a75e8be290696142defdd",
+    "expected_findings": [
+      "statement type not allowed: begin_end_block",
+      "statement type not allowed: drop_table_statement",
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/integrity-and-logs/sql-server-2025/025-error-log-entries.sql": {
+    "sha256": "4d4925a5e0e4a29dbc03c6be42d684166f44c3f991abb34a06d724bf4dbaf811",
+    "expected_findings": [
+      "statement type not allowed: drop_table_statement",
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: while_statement",
+      "statement type not allowed: begin_end_block",
+      "statement type not allowed: set_local_variable_segment",
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2025/026-tempdb-data-files.sql": {
+    "sha256": "826f29a6e12335cb6d793bb22dae9db1bae0c9d62c53738817d7ae7153a12acb",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/diagnostics/glenn-berry/tempdb/sql-server-2025/027-tempdb-data-file-sizes.sql": {
+    "sha256": "d93bd71efc3fad1cc445b2114a9eebd9f54abbf595225deacc54ec495fbbff27",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/sql-server-2025/033-io-warnings.sql": {
+    "sha256": "cc56bbaac0bb2b4ebdbc8d750113497295fef575cc80f5a22e2e3d5dc06de574",
+    "expected_findings": [
+      "statement type not allowed: drop_table_statement",
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/memory/sql-server-2025/056-long-buffer-pool-scans.sql": {
+    "sha256": "ecf5cee80c623fee0a3ce02171f3f25aa1db00b2a7a954849e144574a57d6270",
+    "expected_findings": [
+      "statement type not allowed: execute_script_statement",
+      "operation not allowed in this collection: EXEC"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  },
+  "scripts/performance/glenn-berry/io/azure-sql-managed-instance/015-io-warnings.sql": {
+    "sha256": "af9522f912b804b9bff59e840d6019b74ed7702b0b1593403c5f1ba99ee642da",
+    "expected_findings": [
+      "statement type not allowed: create_table_statement",
+      "statement type not allowed: insert_statement",
+      "statement type not allowed: drop_table_statement",
+      "operation not allowed in this collection: CREATE",
+      "operation not allowed in this collection: DROP",
+      "operation not allowed in this collection: EXEC",
+      "operation not allowed in this collection: INSERT",
+      "operation not allowed in this collection: INTO"
+    ],
+    "reason": "Reviewed source diagnostic calls, local temporary-table operations or local variable/control-flow constructs; no persistent changes intended. See collection guide."
+  }
+}

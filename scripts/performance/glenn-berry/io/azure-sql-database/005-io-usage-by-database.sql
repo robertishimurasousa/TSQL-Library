@@ -1,0 +1,46 @@
+-- TSQL Library: IO Usage By Database
+-- Author: Glenn Berry. Adaptation: split and categorized by TSQL Library.
+-- Context: target Azure SQL user database
+-- Target platform: Azure SQL Database (upstream suite; not execution-tested).
+-- Mode: metadata reads
+-- Permissions: Permissions depend on the referenced objects and platform; see docs/glenn-berry/README.md. Minimum grants have not been execution-tested.
+-- Notes: Original explanatory comments are retained; dated recommendations are historical. Results may disclose environment details, SQL text, plans or log contents; review before sharing.
+-- Reference: https://github.com/Ratithoglys/GlennBerry_DMV_Queries/blob/0e1f8fe7c9664550f74bea7c03a6030cd46afa42/azure.sql#L100-L121
+-- Upstream last modified: January 1, 2025; original query 5.
+-- Validation: source integrity and static checks only; see docs/glenn-berry/README.md.
+-- License: Glenn Berry terms below; this file is NOT covered by the root MIT license.
+
+--*   Copyright (C) 2025 Glenn Berry
+--*   All rights reserved.
+--*
+--*
+--*   You may alter this code for your own *non-commercial* purposes. You may
+--*   republish altered code as long as you include this copyright and give due credit.
+--*
+--*
+--*   THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF
+--*   ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED
+--*   TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+--*   PARTICULAR PURPOSE.
+--*
+
+-- Get I/O utilization by database (Query 5) (IO Usage By Database)
+WITH Aggregate_IO_Statistics
+AS (SELECT DB_NAME(database_id) AS [Database Name],
+    CAST(SUM(num_of_bytes_read + num_of_bytes_written) / 1048576 AS DECIMAL(12, 2)) AS [ioTotalMB],
+    CAST(SUM(num_of_bytes_read ) / 1048576 AS DECIMAL(12, 2)) AS [ioReadMB],
+    CAST(SUM(num_of_bytes_written) / 1048576 AS DECIMAL(12, 2)) AS [ioWriteMB]
+    FROM sys.dm_io_virtual_file_stats(NULL, NULL) AS [DM_IO_STATS]
+    GROUP BY database_id)
+SELECT ROW_NUMBER() OVER (ORDER BY ioTotalMB DESC) AS [I/O Rank],
+        [Database Name], ioTotalMB AS [Total I/O (MB)],
+        CAST(ioTotalMB / SUM(ioTotalMB) OVER () * 100.0 AS DECIMAL(5, 2)) AS [Total I/O %],
+        ioReadMB AS [Read I/O (MB)],
+		CAST(ioReadMB / SUM(ioReadMB) OVER () * 100.0 AS DECIMAL(5, 2)) AS [Read I/O %],
+        ioWriteMB AS [Write I/O (MB)],
+		CAST(ioWriteMB / SUM(ioWriteMB) OVER () * 100.0 AS DECIMAL(5, 2)) AS [Write I/O %]
+FROM Aggregate_IO_Statistics
+ORDER BY [I/O Rank] OPTION (RECOMPILE);
+------
+
+-- Helps determine which database is using the most I/O resources on the instance
