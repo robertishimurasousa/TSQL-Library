@@ -23,6 +23,25 @@ FORBIDDEN_WORDS = {
     'OPENROWSET', 'OPENDATASOURCE', 'RECONFIGURE', 'RESTORE', 'REVOKE',
     'TRUNCATE', 'UPDATE', 'USE', 'XP_CMDSHELL',
 }
+# Only this exact collector was reviewed for database-name quoting, parameterized
+# dynamic catalog reads and session-local temporary-table writes. No directory
+# or general EXEC/DDL exemption is granted to other curated files.
+REVIEWED_COLLECTORS = {
+    'scripts/diagnostics/programmable-objects-all-databases.sql': {
+        'sha256': '61f887147212cff2b2bf695df2a7c83fd16fb579c8a39a1fc9603954c4f3c514',
+        'expected_findings': {
+            'statement type not allowed: create_table_statement',
+            'statement type not allowed: while_statement',
+            'statement type not allowed: begin_end_block',
+            'statement type not allowed: try_catch',
+            'statement type not allowed: execute_script_statement',
+            'statement type not allowed: insert_statement',
+            'statement type not allowed: drop_table_statement',
+            *[f'operation not allowed in this collection: {word}'
+              for word in ('CREATE', 'DROP', 'EXEC', 'INSERT', 'INTO')],
+        },
+    },
+}
 # Scan raw text, including comments. Only report rule and line, never its match.
 SENSITIVE_PATTERNS = {
     'credential-literal': re.compile(
@@ -118,6 +137,16 @@ def validate_imported_sql(text: str, entry: dict, reviews: dict,
     return []
 
 
+def validate_collector_sql(path: str, text: str, linter: Linter | None = None) -> list[str]:
+    review = REVIEWED_COLLECTORS.get(path)
+    if not review or hashlib.sha256(text.encode()).hexdigest() != review['sha256']:
+        return ['collector has no matching reviewed checksum']
+    findings = validate_sql(text, linter)
+    if set(findings) != review['expected_findings']:
+        return ['collector findings differ from its reviewed operations', *findings]
+    return []
+
+
 def main() -> int:
     errors: list[str] = []
     paths = []
@@ -151,13 +180,17 @@ def main() -> int:
     sql_paths = {str(p.relative_to(ROOT)) for p in paths if p.suffix == '.sql'}
     if len(entries) != len(set(entries)) or set(entries) != sql_paths:
         errors.append('catalog must list every SQL file exactly once')
+    if not set(REVIEWED_COLLECTORS) <= sql_paths:
+        errors.append('reviewed collector is missing from the catalog or working tree')
     linter = Linter(dialect='tsql')
     for path in sorted(sql_paths):
         content = (ROOT / path).read_text(encoding='utf-8')
         for field in ['Context:', 'Target platform:', 'Mode:', 'Permissions:', 'Notes:', 'Reference:', 'Validation:']:
             if field not in content:
                 errors.append(f'{path}: missing metadata {field}')
-        if path in imported:
+        if path in REVIEWED_COLLECTORS:
+            problems = validate_collector_sql(path, content, linter)
+        elif path in imported:
             problems = validate_imported_sql(content, imported[path], reviews, linter)
         else:
             problems = validate_sql(content, linter)

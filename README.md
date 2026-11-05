@@ -2,11 +2,11 @@
 
 [![Validate library](https://github.com/robertishimurasousa/TSQL-Library/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/robertishimurasousa/TSQL-Library/actions/workflows/validate.yml)
 
-A collection of T-SQL queries for SQL Server diagnostics and examples using synthetic data: **34 curated scripts** and **951 Glenn Berry diagnostic queries**, organized by purpose and platform, with English documentation.
+A collection of T-SQL queries for SQL Server diagnostics and examples using synthetic data: **50 curated scripts** and **951 Glenn Berry diagnostic queries**, organized by purpose and platform, with English documentation.
 
-Use it to investigate instance health, CPU and memory pressure, I/O latency, blocking, index usage, backup history and availability. Each query is a standalone file; the library does not install database objects or run a diagnostic suite automatically.
+Use it to investigate instance health, CPU and memory pressure, I/O latency, blocking, index usage, backup history and availability, or generate scoped administration commands for review. Each script is standalone; the library does not install persistent database objects or run a suite automatically.
 
-The files have passed static checks, T-SQL parsing and secret scanning. **Execution and compatibility in SQL Server have not yet been validated.** The curated scripts target SQL Server 2016+. Glenn Berry's imported suites cover SQL Server 2005 through 2025, Azure SQL Database and Managed Instance, with separate implementations and upstream terms. Platform labels are not a list of tested versions.
+The files have passed static checks, T-SQL parsing and secret scanning. **Execution and compatibility in SQL Server have not yet been validated.** Most curated scripts target SQL Server 2016+; the WSFC command generators require SQL Server 2017+. Glenn Berry's imported suites cover SQL Server 2005 through 2025, Azure SQL Database and Managed Instance, with separate implementations and upstream terms. Platform labels are not a list of tested versions.
 
 ## Start here
 
@@ -16,7 +16,7 @@ The files have passed static checks, T-SQL parsing and secret scanning. **Execut
 
 | Collection | Contents | Target platforms | Terms |
 |---|---|---|---|
-| Curated library | 34 metadata queries and synthetic examples | SQL Server 2016+ | [MIT](LICENSE) |
+| Curated library | 50 diagnostic queries, command generators and synthetic examples | SQL Server 2016+; WSFC command generators 2017+ | [MIT](LICENSE) |
 | Glenn Berry diagnostics | 951 queries from 13 upstream suites | SQL Server 2005–2025, Azure SQL Database and Managed Instance | [Original author terms](THIRD_PARTY_NOTICES.md) |
 
 ## Find a query
@@ -33,6 +33,7 @@ The files have passed static checks, T-SQL parsing and secret scanning. **Execut
 | [High availability](scripts/high-availability/) | Replica, cluster and replication status where supported |
 | [Security](scripts/security/) | Permissions, encryption status and SQL user mappings |
 | [SQL Agent](scripts/sql-agent/) | Jobs, alerts and execution history |
+| [Script generation](scripts/script-generation/) | Generate job/trigger state changes, EXECUTE grants, planned failover and automatic seeding commands without executing them |
 | [Examples](examples/) | Pagination, distribution functions and NULL predicates using synthetic values |
 
 ## Usage
@@ -42,7 +43,7 @@ The files have passed static checks, T-SQL parsing and secret scanning. **Execut
 3. Review the permissions and declared parameters. Run the file individually in SSMS or an equivalent T-SQL client.
 4. Interpret the results in light of the documented limitations.
 
-The curated selection queries metadata and uses synthetic values in its examples. It does not install jobs, procedures or tables, reconfigure the instance, or perform repairs; SQL-text output is disabled by default where available. Imported Glenn Berry scripts have their own execution modes: some create local temporary tables, call diagnostic procedures or return SQL text and logs by default. Read the [collection guide](docs/glenn-berry/README.md) before using them.
+The curated selection queries metadata, generates command text and uses synthetic examples. One reviewed cross-database collector uses session-local temporary tables and parameterized dynamic catalog reads. It does not execute the objects it discovers. Generators do not execute their output. Optional definitions, identity fields, paths and job commands are disabled by default in the new administration workflows. Imported Glenn Berry scripts have their own execution modes: some create local temporary tables, call diagnostic procedures or return SQL text and logs by default. Read the [collection guide](docs/glenn-berry/README.md) before using them.
 
 Queries can consume resources, acquire read locks and return names, paths, SQL literals or other sensitive information from the connected environment. Review results before publishing them; do not commit results to this repository.
 
@@ -76,7 +77,7 @@ gitleaks dir . --redact=100 --ignore-gitleaks-allow
 gitleaks git . --log-opts="--all" --redact=100 --ignore-gitleaks-allow
 ```
 
-The workflow checks syntax, catalog coverage, file types, the curated read-only policy, exact reviewed upstream exceptions, and secrets in both files and history. It does not execute SQL against a database. See [validation](docs/validation.md), [safety and execution](docs/safety-and-execution.md) and [contributing](CONTRIBUTING.md).
+The workflow checks syntax, catalog coverage, file types, the ordinary curated read-only policy, exact reviewed collector/import exceptions, and secrets in both files and history. It does not execute SQL against a database. See [validation](docs/validation.md), [safety and execution](docs/safety-and-execution.md) and [contributing](CONTRIBUTING.md).
 
 ## Contributing and reporting issues
 

@@ -4,12 +4,13 @@ Review date: November 5, 2026.
 
 | Check | Result |
 |---|---|
-| Static review of selected scripts | 34 files reviewed |
-| SQLFluff 4.5.0 parser, T-SQL dialect | 985 files: 34 curated and 951 imported; zero errors |
+| Static review of selected scripts | 50 files reviewed |
+| SQLFluff 4.5.0 parser, T-SQL dialect | 1,001 files: 50 curated and 951 imported; zero errors |
 | Glenn Berry extraction | All 951 numbered blocks from 13 pinned suites; standalone source links and hashes |
 | Imported operational exceptions | 106 exact-file review receipts; curated policy remains unchanged |
+| Curated cross-database collector | One exact-checksum exception for reviewed dynamic catalog reads and local temporary tables |
 | Catalog, encoding, file types and read-only policy | Passed local checks |
-| Validator and importer regression tests | 17 tests; curated rules, extraction boundaries, source checksums, provenance and exception isolation |
+| Validator and importer regression tests | 20 tests; ordinary curated rules, extraction, checksums, exception isolation, collector inner SQL and nonexecuting generators |
 | Additional secret rules | 3 synthetic cases detected by Gitleaks |
 | Gitleaks 8.30.1, default and additional rules | Zero findings in the prepared files |
 | Execution in SQL Server | Pending |
@@ -31,6 +32,9 @@ Use a disposable instance, a test database and synthetic data. Record the versio
 - Backup: generate FULL, DIFF, LOG and COPY_ONLY backups in the test environment; confirm that types are reported separately. The query does not validate restores.
 - Always On: requires a test environment with an availability group; record primary and secondary replica behavior and visibility limits.
 - Examples: default pagination should return IDs 3 and 4; the NULL example should mark only ID 1 as `Missing`; the two scores of 20 in group A should have the same rank and distribution values.
+- Cross-database collector: include databases with different collations, quotes/closing brackets in names, an offline database, restricted metadata visibility, a database DDL trigger and a server trigger. Verify skipped/error rows, object-category filtering, definition opt-in and refusal to replace pre-existing temporary tables.
+- Command generators: use synthetic names with apostrophes and closing brackets; verify NULL targets return no commands and execution permissions/context are correct. Test generated commands only in disposable environments. Planned failover requires WSFC and both replicas; seeding requires an existing target replica. SQLFluff does not validate every valid escaped identifier or execute generated text.
+- Trace and identity metadata: confirm retained-file time windows, missing default trace behavior and opt-in identity fields; current login metadata does not establish historical authorship. No password hashes or raw SQL trace text are selected.
 
 Update catalog status only when there is evidence for the completed step. Do not use the term "validated" without specifying whether it means static review or execution testing.
 

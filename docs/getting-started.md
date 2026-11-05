@@ -17,7 +17,7 @@ Alternatively, use **Code → Download ZIP** on the repository page and extract 
 
 | Starting point | When to use it |
 |---|---|
-| [Curated catalog](catalog.md) | You want a smaller collection of metadata queries or synthetic T-SQL examples targeting SQL Server 2016+ |
+| [Curated catalog](catalog.md) | You want metadata queries, command generators or synthetic examples; most target SQL Server 2016+, with WSFC command generators requiring 2017+ |
 | [Glenn Berry purpose index](glenn-berry/by-purpose.md) | You want a specific diagnostic topic and a version-specific upstream implementation |
 | [Glenn Berry platform index](glenn-berry/README.md#choose-a-platform) | You want to browse all queries provided for your SQL Server version or Azure platform |
 
@@ -61,6 +61,24 @@ Do not run a whole directory as a batch or uncomment maintenance/configuration e
 | Different results between runs | Counter windows, cache eviction, restarts, workload changes and replica context |
 
 The [validation guide](validation.md) explains the completed checks and pending execution scenarios. For a reproducible problem, report the script path, platform/build, sanitized error and a synthetic reproduction in a [GitHub issue](https://github.com/robertishimurasousa/TSQL-Library/issues). Never attach raw customer query results or credentials.
+
+## Administration workflows
+
+Use the [administration catalog](catalog.md#administration-workflows-and-command-generators) for the 16 generalized scripts. All new operational files are T-SQL; no runtime output or customer-specific source material is included.
+
+| Task | Start with | Important boundary |
+|---|---|---|
+| Find triggers across databases | `programmable-objects-all-databases.sql`, with `@ObjectCategory = N'TRIGGER'` | Includes DML, database DDL and server triggers; server triggers are excluded when a database filter is set |
+| Inventory functions/procedures | The same collector, with FUNCTION or PROCEDURE as the category | Creation/modification dates describe current metadata, not the actor or last execution |
+| Review CLR or module text | `clr-assembly-inventory.sql` and `module-review-candidates.sql` | Reads metadata; does not invoke CLR or execute definitions; a match is not proof of malicious behavior |
+| Locate existing evidence sources | `audit-and-event-sources.sql`, `default-trace-object-events.sql`, `login-password-change-status.sql` | Does not enable collection, recover expired events, select password hashes or identify a person from a login alone |
+| Review authentication/jobs | `current-connection-authentication.sql` and `job-step-inventory.sql` | Current connection only; job command text remains hidden unless explicitly enabled |
+| Investigate Always On | `automatic-seeding-status.sql`, `failover-readiness.sql`, `listener-inventory.sql` | Inspect source and destination separately; missing rows and stale snapshots do not establish health |
+| Prepare administrative commands | Files under `scripts/script-generation/` | Exact target parameters default to NULL, producing no commands until configured; generated commands are never executed by the generator |
+
+For planned failover, use the Windows/WSFC variant only and verify both source and destination before executing generated text. For seeding, the target replica must already be configured; the generator does not add replicas or choose endpoints. SQL Agent job commands do not copy a job, enable its schedules or establish primary-replica ownership. EXECUTE grants default to object scope; deliberately choosing schema/database scope includes future executable objects.
+
+Optional definitions, trace identity fields, paths, assembly hashes and job command text have explicit switches. Enabling them can expose personal or operational data. Ordinary metadata and generated object names may also identify an environment: no query output is guaranteed to be free of PII. Keep all results outside Git and review them before sharing.
 
 ## Licensing
 

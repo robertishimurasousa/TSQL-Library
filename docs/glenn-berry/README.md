@@ -2,7 +2,7 @@
 
 This collection contains **951 standalone queries**, organized into **15 purposes** across **13 platform suites**. Glenn Berry wrote the diagnostic queries; TSQL Library split and categorized them, added execution metadata and preserved the author's explanatory comments and copyright notice in every file.
 
-Start with [queries by purpose](by-purpose.md), or choose a platform below. The 34 original curated library scripts remain available in the [curated catalog](../catalog.md). The machine-readable [catalog](../../catalog.json) covers both collections.
+Start with [queries by purpose](by-purpose.md), or choose a platform below. The 50 curated library scripts remain available in the [curated catalog](../catalog.md). The machine-readable [catalog](../../catalog.json) covers both collections.
 
 ## Choose a platform
 
