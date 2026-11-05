@@ -1,7 +1,8 @@
-"""Validate the deliberately narrow, read-only collection. Never executes SQL."""
+"""Validate curated SQL and individually reviewed upstream imports. Never executes SQL."""
 from __future__ import annotations
 
 import json
+import hashlib
 from pathlib import Path
 import re
 import sys
@@ -72,6 +73,51 @@ def validate_sql(text: str, linter: Linter | None = None) -> list[str]:
     return list(dict.fromkeys(problems))
 
 
+def validate_imported_sql(text: str, entry: dict, reviews: dict,
+                          linter: Linter | None = None) -> list[str]:
+    """Exceptions apply to exact reviewed files, never to a folder or SQL keyword."""
+    digest = hashlib.sha256(text.encode('utf-8')).hexdigest()
+    if digest != entry.get('sha256'):
+        return ['import differs from its catalog checksum; review and regenerate from the pinned source']
+    problems = validate_sql(text, linter)
+    review = reviews.get(entry['path'])
+    if not review:
+        return problems
+    if review.get('sha256') != digest:
+        return ['import differs from its reviewed checksum']
+    expected = review.get('expected_findings', [])
+    # A review receipt cannot exempt credentials, parser errors or arbitrary writes.
+    permitted = {
+        'statement type not allowed: dbcc_statement',
+        'statement type not allowed: execute_script_statement',
+        'statement type not allowed: create_table_statement',
+        'statement type not allowed: insert_statement',
+        'statement type not allowed: drop_table_statement',
+        'statement type not allowed: set_local_variable_segment',
+        'statement type not allowed: while_statement',
+        'statement type not allowed: begin_end_block',
+        *[f'operation not allowed in this collection: {word}'
+          for word in ('DBCC', 'EXEC', 'CREATE', 'DROP', 'INSERT', 'INTO')],
+    }
+    for finding in expected:
+        if finding in permitted:
+            continue
+        match = re.fullmatch(r'ipv4-literal at line (\d+)', finding)
+        if match:
+            lines = text.splitlines()
+            index = int(match[1]) - 1
+            # Only dated upstream CTP/RC build-table comments, not arbitrary addresses.
+            if 0 <= index < len(lines) and re.fullmatch(
+                r'--\s+(?:13|14|16|17)\.0\.\d+\.\d+\s+(?:CTP|RC)\s*[\d.]+\s+[\d/-]+\s*',
+                lines[index],
+            ):
+                continue
+        return ['review receipt contains a non-exemptible finding']
+    if sorted(problems) != sorted(expected):
+        return ['review receipt no longer matches static findings', *problems]
+    return []
+
+
 def main() -> int:
     errors: list[str] = []
     paths = []
@@ -94,6 +140,13 @@ def main() -> int:
         except UnicodeDecodeError:
             errors.append(f'{relative}: not UTF-8 text')
     catalog = json.loads((ROOT / 'catalog.json').read_text(encoding='utf-8'))
+    reviews = json.loads((ROOT / 'tools/glenn_berry_review.json').read_text(encoding='utf-8'))
+    imported = {row['path']: row for row in catalog if row.get('author') == 'Glenn Berry'}
+    if not set(reviews) <= set(imported):
+        errors.append('upstream review receipts reference missing catalog entries')
+    for row in catalog:
+        if ('glenn-berry' in Path(row['path']).parts) != (row['path'] in imported):
+            errors.append(f"{row['path']}: imported provenance does not match its location")
     entries = [row['path'] for row in catalog]
     sql_paths = {str(p.relative_to(ROOT)) for p in paths if p.suffix == '.sql'}
     if len(entries) != len(set(entries)) or set(entries) != sql_paths:
@@ -104,7 +157,11 @@ def main() -> int:
         for field in ['Context:', 'Target platform:', 'Mode:', 'Permissions:', 'Notes:', 'Reference:', 'Validation:']:
             if field not in content:
                 errors.append(f'{path}: missing metadata {field}')
-        errors.extend(f'{path}: {e}' for e in validate_sql(content, linter))
+        if path in imported:
+            problems = validate_imported_sql(content, imported[path], reviews, linter)
+        else:
+            problems = validate_sql(content, linter)
+        errors.extend(f'{path}: {e}' for e in problems)
     for error in errors:
         print(error)
     print(f'{len(sql_paths)} SQL files checked; {len(errors)} problem(s).')

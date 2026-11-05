@@ -5,9 +5,11 @@ Review date: November 5, 2026.
 | Check | Result |
 |---|---|
 | Static review of selected scripts | 34 files reviewed |
-| SQLFluff 4.5.0 parser, T-SQL dialect | 34 files, zero errors |
+| SQLFluff 4.5.0 parser, T-SQL dialect | 985 files: 34 curated and 951 imported; zero errors |
+| Glenn Berry extraction | All 951 numbered blocks from 13 pinned suites; standalone source links and hashes |
+| Imported operational exceptions | 106 exact-file review receipts; curated policy remains unchanged |
 | Catalog, encoding, file types and read-only policy | Passed local checks |
-| Validator regression tests | 8 tests passed |
+| Validator and importer regression tests | 17 tests; curated rules, extraction boundaries, source checksums, provenance and exception isolation |
 | Additional secret rules | 3 synthetic cases detected by Gitleaks |
 | Gitleaks 8.30.1, default and additional rules | Zero findings in the prepared files |
 | Execution in SQL Server | Pending |
@@ -31,6 +33,10 @@ Use a disposable instance, a test database and synthetic data. Record the versio
 - Examples: default pagination should return IDs 3 and 4; the NULL example should mark only ID 1 as `Missing`; the two scores of 20 in group A should have the same rank and distribution values.
 
 Update catalog status only when there is evidence for the completed step. Do not use the term "validated" without specifying whether it means static review or execution testing.
+
+## Imported diagnostic suites
+
+See the [Glenn Berry validation and reproduction guide](glenn-berry/README.md#validation-and-updates). All imported SQL is parsed and scanned. Individually reviewed findings are accepted only for exact file hashes, with no permission to exempt secrets or parser errors. Original query bodies are preserved except for documented splitting, whitespace/encoding normalization, one bracketed identifier and one corrected version guard. Review receipts are not a sandbox or a guarantee of safe execution. Version-specific runtime tests and least-privilege tests have not been performed.
 
 ## Updating older clones
 
