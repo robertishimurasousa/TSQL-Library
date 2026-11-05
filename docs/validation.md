@@ -13,16 +13,16 @@ Review date: November 5, 2026.
 | Validator and importer regression tests | 20 tests; ordinary curated rules, extraction, checksums, exception isolation, collector inner SQL and nonexecuting generators |
 | Additional secret rules | 3 synthetic cases detected by Gitleaks |
 | Gitleaks 8.30.1, default and additional rules | Zero findings in the prepared files |
-| Execution in SQL Server | Pending |
+| Execution in SQL Server | 36 local synthetic scenarios passed for 16 administration workflows on SQL Server 2022 build 16.0.4305.5 under emulation; [scope and limits](runtime-validation.md) |
 | Minimum permissions and version compatibility | Pending |
 | Curated Git history | Rebuilt from the selection; CI continues to scan all references |
 | GitHub workflow execution | See the run for the relevant commit in the Actions tab |
 
 Syntax checking does not resolve column names against a server or test permissions, performance, the availability of SQL Agent/Always On, or actual results. The parser and scanner do not replace contextual review.
 
-## Planned execution tests
+## Remaining execution tests
 
-Use a disposable instance, a test database and synthetic data. Record the version/build and permissions without exporting private data to Git.
+The [runtime report](runtime-validation.md) records the completed administration-workflow cases. Remaining version, topology and permission combinations still require tests. Use a disposable instance, a test database and synthetic data. Record the version/build and permissions without exporting private data to Git.
 
 - Inventory, files, services and security: compare results with the test environment's catalogs; include an account with restricted visibility.
 - Tables and indexes: create a table with multiple indexes and partitions; confirm that approximate row counts are not multiplied by secondary indexes.
@@ -32,9 +32,9 @@ Use a disposable instance, a test database and synthetic data. Record the versio
 - Backup: generate FULL, DIFF, LOG and COPY_ONLY backups in the test environment; confirm that types are reported separately. The query does not validate restores.
 - Always On: requires a test environment with an availability group; record primary and secondary replica behavior and visibility limits.
 - Examples: default pagination should return IDs 3 and 4; the NULL example should mark only ID 1 as `Missing`; the two scores of 20 in group A should have the same rank and distribution values.
-- Cross-database collector: include databases with different collations, quotes/closing brackets in names, an offline database, restricted metadata visibility, a database DDL trigger and a server trigger. Verify skipped/error rows, object-category filtering, definition opt-in and refusal to replace pre-existing temporary tables.
-- Command generators: use synthetic names with apostrophes and closing brackets; verify NULL targets return no commands and execution permissions/context are correct. Test generated commands only in disposable environments. Planned failover requires WSFC and both replicas; seeding requires an existing target replica. SQLFluff does not validate every valid escaped identifier or execute generated text.
-- Trace and identity metadata: confirm retained-file time windows, missing default trace behavior and opt-in identity fields; current login metadata does not establish historical authorship. No password hashes or raw SQL trace text are selected.
+- Cross-database collector: repeat the completed collation, quoting, visibility, offline-database and collision cases on supported native hosts and other target versions; add concurrent database removal and additional permission combinations.
+- Command generators: extend the completed job/trigger/grant cases to additional principal types and minimum permissions. Planned failover requires WSFC and both replicas; seeding requires an existing target replica. These positive topology cases remain pending. SQLFluff does not validate every valid escaped identifier or execute generated text.
+- Trace and identity metadata: extend the completed retained-event and identity opt-in checks to missing files, expiration and rollover edge cases. Current login metadata does not establish historical authorship. No password hashes or raw SQL trace text are selected.
 
 Update catalog status only when there is evidence for the completed step. Do not use the term "validated" without specifying whether it means static review or execution testing.
 

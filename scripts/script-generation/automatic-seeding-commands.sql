@@ -1,12 +1,12 @@
 /*
 TSQL Library — Generate automatic seeding commands for an existing replica
 Context: master on the current primary replica
-Target platform: SQL Server 2017+ on Windows/WSFC; execution against a server remains unvalidated.
+Target platform: SQL Server 2017+ on Windows/WSFC; see Validation for the tested build and platform limitations.
 Mode: generator only; returns command text and never executes it.
 Permissions: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+). Generated commands require availability group administration permissions.
 Notes: Requires exact group and existing target-replica names. Does not add replicas, change endpoints or select synchronous mode. Review capacity, paths, database containment settings, endpoint connectivity and target identity before separately executing either output.
 Reference: https://learn.microsoft.com/en-us/sql/database-engine/availability-groups/windows/automatic-seeding-secondary-replicas
-Validation: static checks only; see docs/validation.md.
+Validation: Empty-state execution only on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

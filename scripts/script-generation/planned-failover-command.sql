@@ -1,12 +1,12 @@
 /*
 TSQL Library — Generate a planned WSFC availability group failover command
 Context: master on the intended secondary replica
-Target platform: SQL Server 2017+ on Windows/WSFC; execution against a server remains unvalidated.
+Target platform: SQL Server 2017+ on Windows/WSFC; see Validation for the tested build and platform limitations.
 Mode: generator only; returns command text and never executes it.
 Permissions: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+). Executing generated text requires ALTER AVAILABILITY GROUP or equivalent authority.
 Notes: Requires one exact group and passing visible local database indicators. Recheck both replicas, synchronous mode, quorum and all databases immediately before execution. Snapshot can become stale; no forced/data-loss failover is generated.
 Reference: https://learn.microsoft.com/en-us/sql/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server
-Validation: static checks only; see docs/validation.md.
+Validation: Empty-state execution only on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

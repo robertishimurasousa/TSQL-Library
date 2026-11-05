@@ -1,12 +1,12 @@
 /*
 TSQL Library — Generate a scoped EXECUTE grant
 Context: database to configure
-Target platform: SQL Server 2016+; execution against a server remains unvalidated.
+Target platform: SQL Server 2016+; see Validation for the tested build and platform limitations.
 Mode: generator only; returns command text and never executes it.
 Permissions: Metadata visibility in the selected database; VIEW DEFINITION for complete visible definitions. Executing the generated GRANT requires grant authority on the chosen securable.
 Notes: Requires an existing principal and an explicit object/schema/database scope. Object is the default. Schema/database grants include future executable objects; no users or roles are created and no server-wide EXECUTE grant is assumed.
 Reference: https://learn.microsoft.com/en-us/sql/relational-databases/stored-procedures/grant-permissions-on-a-stored-procedure
-Validation: static checks only; see docs/validation.md.
+Validation: Synthetic runtime scenarios passed on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

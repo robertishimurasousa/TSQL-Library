@@ -28,17 +28,15 @@ FORBIDDEN_WORDS = {
 # or general EXEC/DDL exemption is granted to other curated files.
 REVIEWED_COLLECTORS = {
     'scripts/diagnostics/programmable-objects-all-databases.sql': {
-        'sha256': '61f887147212cff2b2bf695df2a7c83fd16fb579c8a39a1fc9603954c4f3c514',
+        'sha256': 'b2a3cc884d67c63ae71ae96c1523c03f6de7a2d7e2ce7b72b4a7d9f5061e7d43',
         'expected_findings': {
             'statement type not allowed: create_table_statement',
             'statement type not allowed: while_statement',
             'statement type not allowed: begin_end_block',
             'statement type not allowed: try_catch',
             'statement type not allowed: execute_script_statement',
-            'statement type not allowed: insert_statement',
-            'statement type not allowed: drop_table_statement',
             *[f'operation not allowed in this collection: {word}'
-              for word in ('CREATE', 'DROP', 'EXEC', 'INSERT', 'INTO')],
+              for word in ('CREATE', 'EXEC')],
         },
     },
 }

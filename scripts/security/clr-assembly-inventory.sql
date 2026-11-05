@@ -1,12 +1,12 @@
 /*
 TSQL Library — CLR assemblies and bound modules
 Context: database to inspect
-Target platform: SQL Server 2016+; execution against a server remains unvalidated.
+Target platform: SQL Server 2016+; see Validation for the tested build and platform limitations.
 Mode: read-only; SET/DECLARE affect only the session or batch.
 Permissions: Metadata visibility in the selected database; VIEW DEFINITION for complete visible definitions.
 Notes: Does not execute CLR, export DLLs or classify assemblies as malicious. Permission set is a declared property, not proof of safety. Names and optional hashes are environment-specific; current owner is not the creator.
 Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-assemblies-transact-sql
-Validation: static checks only; see docs/validation.md.
+Validation: Synthetic runtime scenarios passed on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

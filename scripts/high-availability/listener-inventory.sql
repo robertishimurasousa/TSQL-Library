@@ -1,12 +1,12 @@
 /*
 TSQL Library — Availability group listeners and endpoint configuration
 Context: master on an Always On instance
-Target platform: SQL Server 2016+; execution against a server remains unvalidated.
+Target platform: SQL Server 2016+; see Validation for the tested build and platform limitations.
 Mode: read-only; SET/DECLARE affect only the session or batch.
 Permissions: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+). Endpoint metadata also requires VIEW SERVER SECURITY STATE on SQL Server 2022+.
 Notes: Returns configured listener/endpoint names and ports, not a connectivity or SPN test. Network names and optional addresses are environment data; do not publish results unchanged.
 Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-availability-group-listeners-transact-sql
-Validation: static checks only; see docs/validation.md.
+Validation: Empty-state execution only on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

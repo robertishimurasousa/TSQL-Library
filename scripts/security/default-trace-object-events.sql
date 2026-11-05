@@ -1,12 +1,12 @@
 /*
 TSQL Library — Object events in existing default trace files
 Context: master
-Target platform: SQL Server 2016+; execution against a server remains unvalidated.
+Target platform: SQL Server 2016+; see Validation for the tested build and platform limitations.
 Mode: read-only; SET/DECLARE affect only the session or batch.
 Permissions: ALTER TRACE; visibility of sys.traces.
 Notes: Legacy trace reader; does not enable tracing. Set a database and start time in server-local time. Rollover retention is limited and timestamps do not identify a person. Identity fields are opt-in; SQL text is never selected.
 Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-functions/sys-fn-trace-gettable-transact-sql
-Validation: static checks only; see docs/validation.md.
+Validation: Synthetic runtime scenarios passed on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

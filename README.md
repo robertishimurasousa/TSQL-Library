@@ -6,7 +6,7 @@ A collection of T-SQL queries for SQL Server diagnostics and examples using synt
 
 Use it to investigate instance health, CPU and memory pressure, I/O latency, blocking, index usage, backup history and availability, or generate scoped administration commands for review. Each script is standalone; the library does not install persistent database objects or run a suite automatically.
 
-The files have passed static checks, T-SQL parsing and secret scanning. **Execution and compatibility in SQL Server have not yet been validated.** Most curated scripts target SQL Server 2016+; the WSFC command generators require SQL Server 2017+. Glenn Berry's imported suites cover SQL Server 2005 through 2025, Azure SQL Database and Managed Instance, with separate implementations and upstream terms. Platform labels are not a list of tested versions.
+The files have passed static checks, T-SQL parsing and secret scanning. **The 16 administration workflows have limited synthetic execution coverage on SQL Server 2022; the other scripts remain static-only.** See the [runtime coverage and platform limits](docs/runtime-validation.md). Most curated scripts target SQL Server 2016+; the WSFC command generators require SQL Server 2017+. Glenn Berry's imported suites cover SQL Server 2005 through 2025, Azure SQL Database and Managed Instance, with separate implementations and upstream terms. Platform labels are not a list of tested versions.
 
 ## Start here
 

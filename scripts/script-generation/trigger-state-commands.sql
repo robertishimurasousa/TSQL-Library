@@ -1,12 +1,12 @@
 /*
 TSQL Library — Generate an enable or disable command for one trigger
 Context: database containing the trigger
-Target platform: SQL Server 2016+; execution against a server remains unvalidated.
+Target platform: SQL Server 2016+; see Validation for the tested build and platform limitations.
 Mode: generator only; returns command text and never executes it.
 Permissions: Metadata visibility in the selected database; VIEW DEFINITION for complete visible definitions. Generated commands require ALTER on the parent object or the applicable DDL-trigger permission.
 Notes: Set trigger scope and exact name; set schema for object-scoped triggers. Default action is DISABLE. No DROP commands are generated. Parent objects are quoted independently; database/server scopes are not interchangeable.
 Reference: https://learn.microsoft.com/en-us/sql/t-sql/statements/disable-trigger-transact-sql
-Validation: static checks only; see docs/validation.md.
+Validation: Synthetic runtime scenarios passed on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

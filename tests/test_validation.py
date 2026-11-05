@@ -64,15 +64,22 @@ class ValidationTests(unittest.TestCase):
         segments, errors = Lexer(config=FluffConfig(overrides={'dialect': 'tsql'})).lex(sql)
         self.assertFalse(errors)
         # Parse the actual inner SQL, not just the outer string literal.
-        # Identifier escaping still needs engine tests (SQLFluff does not parse
-        # every valid escaped-bracket identifier).
+        # This parser test cannot establish identifier escaping; see the separate
+        # runtime coverage (SQLFluff rejects some valid bracket escapes).
         literals = [s.raw for s in segments if s.raw.startswith("N'")
-                    and 'INSERT INTO #LibraryObjects' in s.raw]
-        self.assertEqual(1, len(literals))
-        payload = literals[0][2:-1].replace("''", "'")
-        parsed = Linter(dialect='tsql').parse_string('USE [SyntheticDatabase]' + payload)
-        self.assertFalse(parsed.violations)
-        self.assertFalse(list(parsed.tree.recursive_crawl('unparsable')))
+                    and any(marker in s.raw for marker in (
+                        'INSERT INTO #LibraryObjects',
+                        'INSERT INTO #LibraryCollectionStatus',
+                        'DROP TABLE #LibraryObjects'))]
+        self.assertEqual(4, len(literals))
+        for literal in literals:
+            payload = literal[2:-1].replace("''", "'")
+            if 'FROM sys.objects AS o' in payload:
+                payload = 'USE [SyntheticDatabase]' + payload
+            with self.subTest(payload_start=payload[:70]):
+                parsed = Linter(dialect='tsql').parse_string(payload)
+                self.assertFalse(parsed.violations)
+                self.assertFalse(list(parsed.tree.recursive_crawl('unparsable')))
 
     def test_command_generators_remain_nonexecuting_curated_queries(self):
         paths = sorted((ROOT / 'scripts/script-generation').glob('*.sql'))

@@ -2,7 +2,7 @@
 
 For the 951 imported diagnostic queries, use the [Glenn Berry purpose index](glenn-berry/by-purpose.md) or [platform guide](glenn-berry/README.md). [catalog.json](../catalog.json) covers all 1,001 SQL files.
 
-50 curated scripts, command generators and synthetic examples. Most target SQL Server 2016+; WSFC command generators require SQL Server 2017+. Read each header. Execution compatibility remains unvalidated.
+50 curated scripts, command generators and synthetic examples. Most target SQL Server 2016+; WSFC command generators require SQL Server 2017+. Read each header. Runtime coverage is limited to [16 administration workflows on one SQL Server 2022 lab](runtime-validation.md); other versions and scripts remain untested.
 
 Select the indicated database before running a script. Each file documents its permissions and limitations. Microsoft links in the headers describe the queried objects.
 
@@ -45,7 +45,7 @@ Select the indicated database before running a script. Each file documents its p
 
 ## Review status
 
-All files have received static review and passed the SQLFluff T-SQL parser. None is marked as execution-tested in SQL Server. `catalog.json` provides the same inventory in a structured format.
+All files have received static review and passed the SQLFluff T-SQL parser. The [runtime report](runtime-validation.md) distinguishes positive synthetic coverage from empty-state checks for the 16 administration workflows; other scripts remain static-only. `catalog.json` provides the same inventory in a structured format.
 
 DMV queries show a snapshot or cumulative counters, with visibility depending on permissions. An empty result does not prove health, absence of access or lack of usage.
 
