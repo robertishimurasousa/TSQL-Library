@@ -1,4 +1,6 @@
-# Catalog
+# Curated script catalog
+
+For the 951 imported diagnostic queries, use the [Glenn Berry purpose index](glenn-berry/by-purpose.md) or [platform guide](glenn-berry/README.md). [catalog.json](../catalog.json) covers all 985 SQL files.
 
 34 read-only scripts and synthetic examples. Target platform: SQL Server 2016+. Execution compatibility still requires validation.
 

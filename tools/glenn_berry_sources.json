@@ -1,0 +1,97 @@
+{
+  "repository": "https://github.com/Ratithoglys/GlennBerry_DMV_Queries",
+  "commit": "0e1f8fe7c9664550f74bea7c03a6030cd46afa42",
+  "sources": [
+    {
+      "file": "2005.sql",
+      "platform": "sql-server-2005",
+      "sha256": "3b2dfdf28941b7c8c1eabcb9b3163feccd45ca70cb0f71fcf4a7afd8135f9d45",
+      "encoding": "cp1252",
+      "last_modified": "January 1, 2025"
+    },
+    {
+      "file": "2008.sql",
+      "platform": "sql-server-2008",
+      "sha256": "762982bf7222f79b3c80d29fc344c735c9a7591a0688a028be4ce0aa9a3a0131",
+      "encoding": "cp1252",
+      "last_modified": "January 1, 2025"
+    },
+    {
+      "file": "2008R2.sql",
+      "platform": "sql-server-2008r2",
+      "sha256": "09dddd7fa1afb0ec9a926b0cd621e37363397261561aaea70e63778c2d6fb57a",
+      "encoding": "cp1252",
+      "last_modified": "January 1, 2025"
+    },
+    {
+      "file": "2012.sql",
+      "platform": "sql-server-2012",
+      "sha256": "0465e910202d19caecbfbcf6115d378c4b2b0fb8e44c5a00d923336563d955f6",
+      "encoding": "cp1252",
+      "last_modified": "August 4, 2025"
+    },
+    {
+      "file": "2014.sql",
+      "platform": "sql-server-2014",
+      "sha256": "72343b17c9222ab0553e8e2e79b24b3a8d905efd60f69fb6ddcf884c8d251dee",
+      "encoding": "cp1252",
+      "last_modified": "August 4, 2025"
+    },
+    {
+      "file": "2016.sql",
+      "platform": "sql-server-2016",
+      "sha256": "46333358d696a7467049e3319f2422ff906f9410037b4673b0308a68a502beaa",
+      "encoding": "cp1252",
+      "last_modified": "August 4, 2025"
+    },
+    {
+      "file": "2016SP2.sql",
+      "platform": "sql-server-2016sp2",
+      "sha256": "dca0f86182df7332e59704446ace446135722d10ca9504c42282a2c2a9bf08d7",
+      "encoding": "cp1252",
+      "last_modified": "August 12, 2025"
+    },
+    {
+      "file": "2017.sql",
+      "platform": "sql-server-2017",
+      "sha256": "cf16a2df546b1087f3afa935aac3af28636ae786f2c872555b08f944b5f05ba2",
+      "encoding": "cp1252",
+      "last_modified": "August 12, 2025"
+    },
+    {
+      "file": "2019.sql",
+      "platform": "sql-server-2019",
+      "sha256": "46c598161f5b94f2a597db255f8a2e05057a0e652b04da980bad4ec3d522a4e6",
+      "encoding": "cp1252",
+      "last_modified": "August 12, 2025"
+    },
+    {
+      "file": "2022sql",
+      "platform": "sql-server-2022",
+      "sha256": "bef33f61d095e494956335a3c3cfb6e2c82bc3ef2278b9d128887018a60262e9",
+      "encoding": "cp1252",
+      "last_modified": "August 12, 2025"
+    },
+    {
+      "file": "2025sql",
+      "platform": "sql-server-2025",
+      "sha256": "c8c1b3528a30a959e5171459a3b80ea14896a6d2fb63b88b9d3afc6f540f8afa",
+      "encoding": "cp1252",
+      "last_modified": "August 4, 2025"
+    },
+    {
+      "file": "azure.sql",
+      "platform": "azure-sql-database",
+      "sha256": "0cc86e7c69e2edf1ff2ea83539038cc1de4db30f6aed4922d2c6524554645137",
+      "encoding": "cp1252",
+      "last_modified": "January 1, 2025"
+    },
+    {
+      "file": "managed.sql",
+      "platform": "azure-sql-managed-instance",
+      "sha256": "dc33f660a55f5c7e25f57de7a77a12700d154979e2ef2c2ba07dc6cbe151c23c",
+      "encoding": "cp1252",
+      "last_modified": "February 13, 2025"
+    }
+  ]
+}

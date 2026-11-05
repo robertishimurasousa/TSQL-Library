@@ -1,5 +1,7 @@
 # Safety and execution
 
+The permissions and examples below describe the original curated collection. Imported Glenn Berry queries have additional diagnostic calls, local temporary tables, legacy database iteration and potentially sensitive output; read their [execution guide](glenn-berry/README.md#permissions-and-execution-modes) and per-file headers.
+
 ## Permissions
 
 Use a test account with the permissions required by the script. Do not grant `sysadmin` as the default response to access errors. Metadata may be silently omitted when an account lacks sufficient visibility.
@@ -16,7 +18,7 @@ This table does not replace the requirements for each object. Consult the script
 
 ## Context and output
 
-Database-scoped queries use the connection's current database; they do not automatically iterate through all databases. `tempdb-space.sql` stops the batch if the connection is not using `tempdb`. Examples use CTEs and `VALUES`, without creating tables.
+Curated database-scoped queries use the connection's current database; they do not automatically iterate through all databases. Some imported legacy VLF queries do iterate across databases. `tempdb-space.sql` stops the batch if the connection is not using `tempdb`. Curated examples use CTEs and `VALUES`, without creating tables.
 
 Queries may expose identities, paths, objects, topology and command text. The library's source contains no environment data, but execution results contain information from the queried server. Review results before sharing them.
 

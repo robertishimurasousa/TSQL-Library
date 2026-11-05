@@ -1,0 +1,85 @@
+# Glenn Berry queries: SQL Server 2014
+
+[Collection guide](README.md) · [Browse by purpose](by-purpose.md)
+
+Source: [`2014.sql`](https://github.com/Ratithoglys/GlennBerry_DMV_Queries/blob/0e1f8fe7c9664550f74bea7c03a6030cd46afa42/2014.sql). Last modified upstream: August 4, 2025.
+
+Choose a query and read its context, permissions, mode and notes before running it. Version labels identify the upstream suite, not tested compatibility.
+
+| Original query | Purpose | Query | Context | Execution mode |
+|---|---|---|---|---|
+| 1 | diagnostics / instance | [Version Info](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/001-version-info.sql) | master on the target instance | metadata reads |
+| 2 | performance / cpu | [Core Counts](../../scripts/performance/glenn-berry/cpu/sql-server-2014/002-core-counts.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 3 | diagnostics / instance | [Server Properties](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/003-server-properties.sql) | master on the target instance | metadata reads |
+| 4 | diagnostics / instance | [Configuration Values](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/004-configuration-values.sql) | master on the target instance | metadata reads |
+| 5 | diagnostics / instance | [Global Trace Flags](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/005-global-trace-flags.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 6 | diagnostics / instance | [IFI Status](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/006-ifi-status.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 7 | performance / memory | [Process Memory](../../scripts/performance/glenn-berry/memory/sql-server-2014/007-process-memory.sql) | master on the target instance | metadata reads |
+| 8 | diagnostics / instance | [SQL Server Services Info](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/008-sql-server-services-info.sql) | master on the target instance | metadata reads |
+| 9 | backup-and-restore / backups | [Last Backup By Database](../../scripts/backup-and-restore/glenn-berry/backups/sql-server-2014/009-last-backup-by-database.sql) | master on the target instance | metadata reads |
+| 10 | sql-agent / jobs-and-alerts | [SQL Server Agent Jobs](../../scripts/sql-agent/glenn-berry/jobs-and-alerts/sql-server-2014/010-sql-server-agent-jobs.sql) | master on the target instance | metadata reads |
+| 11 | sql-agent / jobs-and-alerts | [SQL Server Agent Alerts](../../scripts/sql-agent/glenn-berry/jobs-and-alerts/sql-server-2014/011-sql-server-agent-alerts.sql) | master on the target instance | metadata reads |
+| 12 | diagnostics / instance | [Windows Info](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/012-windows-info.sql) | master on the target instance | metadata reads |
+| 13 | performance / cpu | [SQL Server NUMA Info](../../scripts/performance/glenn-berry/cpu/sql-server-2014/013-sql-server-numa-info.sql) | master on the target instance | metadata reads |
+| 14 | performance / memory | [System Memory](../../scripts/performance/glenn-berry/memory/sql-server-2014/014-system-memory.sql) | master on the target instance | metadata reads |
+| 15 | high-availability / replication-and-clustering | [Cluster Node Properties](../../scripts/high-availability/glenn-berry/replication-and-clustering/sql-server-2014/015-cluster-node-properties.sql) | master on the target instance | metadata reads |
+| 16 | high-availability / replication-and-clustering | [AlwaysOn AG Cluster](../../scripts/high-availability/glenn-berry/replication-and-clustering/sql-server-2014/016-alwayson-ag-cluster.sql) | master on the target instance | metadata reads |
+| 17 | high-availability / replication-and-clustering | [AG Status](../../scripts/high-availability/glenn-berry/replication-and-clustering/sql-server-2014/017-ag-status.sql) | master on the target instance | metadata reads |
+| 18 | diagnostics / instance | [Hardware Info](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/018-hardware-info.sql) | master on the target instance | metadata reads |
+| 19 | diagnostics / instance | [System Manufacturer](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/019-system-manufacturer.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 20 | diagnostics / instance | [BIOS Date](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/020-bios-date.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 21 | diagnostics / instance | [Processor Description](../../scripts/diagnostics/glenn-berry/instance/sql-server-2014/021-processor-description.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 22 | diagnostics / integrity-and-logs | [Memory Dump Info](../../scripts/diagnostics/glenn-berry/integrity-and-logs/sql-server-2014/022-memory-dump-info.sql) | master on the target instance | metadata reads |
+| 23 | diagnostics / integrity-and-logs | [Suspect Pages](../../scripts/diagnostics/glenn-berry/integrity-and-logs/sql-server-2014/023-suspect-pages.sql) | master on the target instance | metadata reads |
+| 24 | diagnostics / tempdb | [Tempdb Data Files](../../scripts/diagnostics/glenn-berry/tempdb/sql-server-2014/024-tempdb-data-files.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 25 | diagnostics / tempdb | [Tempdb Data File Sizes](../../scripts/diagnostics/glenn-berry/tempdb/sql-server-2014/025-tempdb-data-file-sizes.sql) | master on the target instance | metadata reads; diagnostic procedure/DBCC calls |
+| 26 | diagnostics / databases | [Database Filenames and Paths](../../scripts/diagnostics/glenn-berry/databases/sql-server-2014/026-database-filenames-and-paths.sql) | master on the target instance | metadata reads |
+| 27 | performance / io | [Volume Info](../../scripts/performance/glenn-berry/io/sql-server-2014/027-volume-info.sql) | master on the target instance | metadata reads |
+| 28 | performance / io | [Drive Level Latency](../../scripts/performance/glenn-berry/io/sql-server-2014/028-drive-level-latency.sql) | master on the target instance | metadata reads |
+| 29 | performance / io | [IO Latency by File](../../scripts/performance/glenn-berry/io/sql-server-2014/029-io-latency-by-file.sql) | master on the target instance | metadata reads |
+| 30 | performance / io | [IO Warnings](../../scripts/performance/glenn-berry/io/sql-server-2014/030-io-warnings.sql) | master on the target instance | metadata reads with local temporary tables; diagnostic procedure/DBCC calls |
+| 31 | performance / resource-governance | [RG Resource Pools](../../scripts/performance/glenn-berry/resource-governance/sql-server-2014/031-rg-resource-pools.sql) | master on the target instance | metadata reads |
+| 32 | diagnostics / databases | [Database Properties](../../scripts/diagnostics/glenn-berry/databases/sql-server-2014/032-database-properties.sql) | master on the target instance | metadata reads |
+| 33 | indexes-and-statistics / indexes | [Missing Indexes All Databases](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/033-missing-indexes-all-databases.sql) | master on the target instance | metadata reads |
+| 34 | diagnostics / databases | [VLF Counts](../../scripts/diagnostics/glenn-berry/databases/sql-server-2014/034-vlf-counts.sql) | master on the target instance | metadata reads with local temporary tables; diagnostic procedure/DBCC calls |
+| 35 | performance / cpu | [CPU Usage by Database](../../scripts/performance/glenn-berry/cpu/sql-server-2014/035-cpu-usage-by-database.sql) | master on the target instance | metadata reads |
+| 36 | performance / io | [IO Usage By Database](../../scripts/performance/glenn-berry/io/sql-server-2014/036-io-usage-by-database.sql) | master on the target instance | metadata reads |
+| 37 | performance / memory | [Total Buffer Usage by Database](../../scripts/performance/glenn-berry/memory/sql-server-2014/037-total-buffer-usage-by-database.sql) | master on the target instance | metadata reads |
+| 38 | performance / waits | [Top Waits](../../scripts/performance/glenn-berry/waits/sql-server-2014/038-top-waits.sql) | master on the target instance | metadata reads |
+| 39 | diagnostics / sessions-and-blocking | [Connection Counts by IP Address](../../scripts/diagnostics/glenn-berry/sessions-and-blocking/sql-server-2014/039-connection-counts-by-ip-address.sql) | master on the target instance | metadata reads |
+| 40 | performance / cpu | [Avg Task Counts](../../scripts/performance/glenn-berry/cpu/sql-server-2014/040-avg-task-counts.sql) | master on the target instance | metadata reads |
+| 41 | diagnostics / sessions-and-blocking | [Detect Blocking](../../scripts/diagnostics/glenn-berry/sessions-and-blocking/sql-server-2014/041-detect-blocking.sql) | master on the target instance | metadata reads |
+| 42 | performance / cpu | [CPU Utilization History](../../scripts/performance/glenn-berry/cpu/sql-server-2014/042-cpu-utilization-history.sql) | master on the target instance | metadata reads |
+| 43 | performance / query-statistics | [Top Worker Time Queries](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/043-top-worker-time-queries.sql) | master on the target instance | metadata reads |
+| 44 | performance / memory | [PLE by NUMA Node](../../scripts/performance/glenn-berry/memory/sql-server-2014/044-ple-by-numa-node.sql) | master on the target instance | metadata reads |
+| 45 | performance / memory | [Memory Grants Pending](../../scripts/performance/glenn-berry/memory/sql-server-2014/045-memory-grants-pending.sql) | master on the target instance | metadata reads |
+| 46 | performance / memory | [Memory Clerk Usage](../../scripts/performance/glenn-berry/memory/sql-server-2014/046-memory-clerk-usage.sql) | master on the target instance | metadata reads |
+| 47 | performance / query-statistics | [Ad hoc Queries](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/047-ad-hoc-queries.sql) | master on the target instance | metadata reads |
+| 48 | performance / query-statistics | [Top Logical Reads Queries](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/048-top-logical-reads-queries.sql) | master on the target instance | metadata reads |
+| 49 | performance / query-statistics | [Top Avg Elapsed Time Queries](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/049-top-avg-elapsed-time-queries.sql) | master on the target instance | metadata reads |
+| 50 | diagnostics / databases | [File Sizes and Space](../../scripts/diagnostics/glenn-berry/databases/sql-server-2014/050-file-sizes-and-space.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 51 | diagnostics / databases | [Log Space Usage](../../scripts/diagnostics/glenn-berry/databases/sql-server-2014/051-log-space-usage.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 52 | performance / io | [IO Stats By File](../../scripts/performance/glenn-berry/io/sql-server-2014/052-io-stats-by-file.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 53 | performance / query-statistics | [Query Execution Counts](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/053-query-execution-counts.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 54 | performance / query-statistics | [SP Execution Counts](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/054-sp-execution-counts.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 55 | performance / query-statistics | [SP Avg Elapsed Time](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/055-sp-avg-elapsed-time.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 56 | performance / query-statistics | [SP Worker Time](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/056-sp-worker-time.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 57 | performance / query-statistics | [SP Logical Reads](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/057-sp-logical-reads.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 58 | performance / query-statistics | [SP Physical Reads](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/058-sp-physical-reads.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 59 | performance / query-statistics | [SP Logical Writes](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/059-sp-logical-writes.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 60 | indexes-and-statistics / indexes | [SP Missing Index](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/060-sp-missing-index.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 61 | performance / query-statistics | [Top IO Statements](../../scripts/performance/glenn-berry/query-statistics/sql-server-2014/061-top-io-statements.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 62 | indexes-and-statistics / indexes | [Bad NC Indexes](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/062-bad-nc-indexes.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 63 | indexes-and-statistics / indexes | [Missing Indexes](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/063-missing-indexes.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 64 | indexes-and-statistics / indexes | [Missing Index Warnings](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/064-missing-index-warnings.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 65 | performance / memory | [Buffer Usage](../../scripts/performance/glenn-berry/memory/sql-server-2014/065-buffer-usage.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 66 | indexes-and-statistics / indexes | [Table Sizes](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/066-table-sizes.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 67 | indexes-and-statistics / indexes | [Table Properties](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/067-table-properties.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 68 | indexes-and-statistics / indexes | [Statistics Update](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/068-statistics-update.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 69 | indexes-and-statistics / indexes | [Volatile Indexes](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/069-volatile-indexes.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 70 | indexes-and-statistics / indexes | [Index Fragmentation](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/070-index-fragmentation.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 71 | indexes-and-statistics / indexes | [Overall Index Usage - Reads](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/071-overall-index-usage-reads.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 72 | indexes-and-statistics / indexes | [Overall Index Usage - Writes](../../scripts/indexes-and-statistics/glenn-berry/indexes/sql-server-2014/072-overall-index-usage-writes.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 73 | performance / waits | [Lock Waits](../../scripts/performance/glenn-berry/waits/sql-server-2014/073-lock-waits.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 74 | diagnostics / sessions-and-blocking | [Input Buffer](../../scripts/diagnostics/glenn-berry/sessions-and-blocking/sql-server-2014/074-input-buffer.sql) | user database to inspect; select it in the client before execution | metadata reads |
+| 75 | backup-and-restore / backups | [Recent Full Backups](../../scripts/backup-and-restore/glenn-berry/backups/sql-server-2014/075-recent-full-backups.sql) | user database to inspect; select it in the client before execution | metadata reads |
