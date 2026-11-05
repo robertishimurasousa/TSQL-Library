@@ -1,12 +1,12 @@
 /*
-TSQL Library — Distribuição e posição percentual
-Contexto: qualquer banco
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: Conexão ao banco; usa apenas valores sintéticos.
-Observações: PERCENT_RANK e CUME_DIST têm comportamentos distintos em empates; nenhuma tabela permanente é criada.
-Referência: https://learn.microsoft.com/en-us/sql/t-sql/functions/cume-dist-transact-sql
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Distribution and percentile ranking
+Context: any database
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: Database connection; uses synthetic values only.
+Notes: PERCENT_RANK and CUME_DIST handle ties differently; no permanent table is created.
+Reference: https://learn.microsoft.com/en-us/sql/t-sql/functions/cume-dist-transact-sql
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

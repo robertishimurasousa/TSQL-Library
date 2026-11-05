@@ -1,12 +1,12 @@
 /*
-TSQL Library — Estado e última conclusão dos jobs
-Contexto: instância com SQL Server Agent
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.
-Observações: Atividade vem da sessão mais recente do Agent; não comprova que o serviço está ativo neste instante.
-Referência: https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/dbo-sysjobactivity-transact-sql
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Job status and latest completion
+Context: instance with SQL Server Agent
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: SELECT on the queried msdb tables; request specific access from your DBA.
+Notes: Activity comes from the most recent Agent session; it does not prove that the service is currently running.
+Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/dbo-sysjobactivity-transact-sql
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

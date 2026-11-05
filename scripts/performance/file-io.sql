@@ -1,12 +1,12 @@
 /*
-TSQL Library — I/O acumulado por arquivo
-Contexto: qualquer banco
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).
-Observações: Contadores acumulados, sem amostragem por intervalo. Média não descreve a distribuição de latências.
-Referência: https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Cumulative file I/O
+Context: any database
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).
+Notes: Counters are cumulative, not sampled over an interval. Averages do not describe the latency distribution.
+Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

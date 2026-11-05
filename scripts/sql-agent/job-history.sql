@@ -1,12 +1,12 @@
 /*
-TSQL Library — Histórico de conclusões dos jobs
-Contexto: instância com SQL Server Agent
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.
-Observações: Duração calculada numericamente, inclusive acima de 24 horas. Datas são horários locais registrados pelo Agent; não há mensagens de erro no resultado.
-Referência: https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/dbo-sysjobhistory-transact-sql
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Job completion history
+Context: instance with SQL Server Agent
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: SELECT on the queried msdb tables; request specific access from your DBA.
+Notes: Duration is calculated numerically, including runs longer than 24 hours. Dates use local times recorded by Agent; error messages are not included.
+Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/dbo-sysjobhistory-transact-sql
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

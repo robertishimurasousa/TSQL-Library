@@ -1,12 +1,12 @@
 /*
-TSQL Library — Requests em execução
-Contexto: qualquer banco
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).
-Observações: Texto SQL é opcional e pode conter dados pessoais ou segredos. Percentual de conclusão existe apenas para determinadas operações.
-Referência: https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Active requests
+Context: any database
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).
+Notes: SQL text is optional and may contain personal data or secrets. Percent complete is available only for certain operations.
+Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

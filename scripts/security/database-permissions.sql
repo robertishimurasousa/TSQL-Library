@@ -1,12 +1,12 @@
 /*
-TSQL Library — Permissões explícitas no banco
-Contexto: banco a inspecionar
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: Visibilidade dos metadados consultados; resultados podem ser parciais.
-Observações: Não calcula permissões efetivas ou herança de roles. IDs de securables são preservados para todas as classes.
-Referência: https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-database-permissions-transact-sql
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Explicit database permissions
+Context: database to inspect
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: Visibility of the queried metadata; results may be partial.
+Notes: Does not calculate effective permissions or role inheritance. Securable IDs are preserved for every class.
+Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-database-permissions-transact-sql
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

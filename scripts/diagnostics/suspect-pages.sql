@@ -1,12 +1,12 @@
 /*
-TSQL Library — Páginas suspeitas registradas
-Contexto: qualquer banco
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.
-Observações: Ausência de registros não comprova integridade; não executa DBCC nem reparos.
-Referência: https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/manage-the-suspect-pages-table-sql-server
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Recorded suspect pages
+Context: any database
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: SELECT on the queried msdb tables; request specific access from your DBA.
+Notes: An empty result does not prove database integrity; no DBCC command or repair is performed.
+Reference: https://learn.microsoft.com/en-us/sql/relational-databases/backup-restore/manage-the-suspect-pages-table-sql-server
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

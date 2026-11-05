@@ -1,12 +1,12 @@
 /*
-TSQL Library — Últimos backups de cada tipo
-Contexto: qualquer banco
-Plataforma-alvo: SQL Server 2016+; execução em servidor ainda não homologada.
-Modo: somente leitura; SET/DECLARE afetam apenas a sessão/lote.
-Permissões: SELECT nas tabelas de msdb consultadas; solicitar acesso específico ao DBA.
-Observações: Histórico local pode ter sido removido ou estar em outra réplica. Não comprova restauração nem cobertura da cadeia de logs.
-Referência: https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/backupset-transact-sql
-Validação: revisão estática e parser T-SQL; consultar docs/validacao.md.
+TSQL Library — Latest backups by type
+Context: any database
+Target platform: SQL Server 2016+; server execution has not yet been validated.
+Mode: read-only; SET/DECLARE affect only the session or batch.
+Permissions: SELECT on the queried msdb tables; request specific access from your DBA.
+Notes: Local history may have been removed or may exist on another replica. Does not prove recoverability or log chain coverage.
+Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/backupset-transact-sql
+Validation: static review and T-SQL parsing; see docs/validation.md.
 */
 SET NOCOUNT ON;
 

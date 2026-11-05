@@ -101,7 +101,7 @@ def main() -> int:
     linter = Linter(dialect='tsql')
     for path in sorted(sql_paths):
         content = (ROOT / path).read_text(encoding='utf-8')
-        for field in ['Contexto:', 'Plataforma-alvo:', 'Modo:', 'Permissões:', 'Observações:', 'Referência:', 'Validação:']:
+        for field in ['Context:', 'Target platform:', 'Mode:', 'Permissions:', 'Notes:', 'Reference:', 'Validation:']:
             if field not in content:
                 errors.append(f'{path}: missing metadata {field}')
         errors.extend(f'{path}: {e}' for e in validate_sql(content, linter))

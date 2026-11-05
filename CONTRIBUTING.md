@@ -1,12 +1,12 @@
-# Contribuir
+# Contributing
 
-Esta seleção inicial aceita consultas de leitura e exemplos sintéticos. Scripts de alteração exigem uma proposta separada de escopo e validação antes de mudar essa regra.
+This initial collection accepts read-only queries and synthetic examples. Scripts that modify state require a separate proposal covering scope and validation before this policy changes.
 
-- Use UTF-8 sem BOM e nomes em `kebab-case.sql`, com um objetivo por arquivo.
-- Informe contexto, plataforma-alvo, permissões, limitações, fonte e evidência de validação no cabeçalho. Atualize `catalog.json` e `docs/catalogo.md`.
-- Use parâmetros nulos ou exemplos sintéticos. Não inclua senhas, hashes de login, tokens, arquivos compactados, dumps, resultados de consultas, nomes de clientes, endpoints ou caminhos de ambientes reais.
-- Revise também comentários, nomes de arquivos e commits. Não contorne o scanner com exceções genéricas ou comentários de supressão.
-- Preserve atribuições e confirme a licença da versão de qualquer código reutilizado. Prefira links oficiais para ferramentas completas de terceiros.
-- Execute as verificações descritas no README. Para afirmar compatibilidade, registre execução em laboratório com versão/build, permissões usadas, cenário e resultado sem dados privados.
+- Use UTF-8 without a BOM and `kebab-case.sql` filenames, with one purpose per file.
+- Document context, target platform, permissions, limitations, sources and validation evidence in the header. Update `catalog.json` and `docs/catalog.md`.
+- Use nullable parameters or synthetic examples. Do not include passwords, login hashes, tokens, archives, dumps, query results, customer names, endpoints or paths from real environments.
+- Review comments, filenames and commits as well. Do not bypass the scanner with broad exceptions or suppression comments.
+- Preserve attribution and verify the license for the version of any reused code. Prefer official links for complete third-party tools.
+- Run the checks described in the README. To claim compatibility, record execution in a test environment, including version/build, permissions, scenario and results without private data.
 
-`tools/validate.py` usa uma política restrita de tipos de instrução e palavras operacionais. É uma barreira adicional de revisão, não um sandbox nem uma prova de que toda consulta aceita é inofensiva. Alterações nessa política precisam de casos de regressão.
+`tools/validate.py` uses a restricted policy for statement types and operational keywords. It is an additional review gate, not a sandbox or proof that every accepted query is harmless. Changes to this policy require regression cases.
