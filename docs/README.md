@@ -11,6 +11,7 @@ TSQL Library contains 50 curated scripts and 951 attributed Glenn Berry diagnost
 | [Curated catalog](catalog.md) | Browse the 50 curated scripts, command generators and synthetic examples |
 | [Glenn Berry queries by purpose](glenn-berry/by-purpose.md) | Find one of 951 imported queries by the problem you want to investigate |
 | [Glenn Berry platform guide](glenn-berry/README.md) | Select a version, review execution modes and understand upstream differences |
+| [Synthetic runtime results](runtime-validation.md) | Review the tested SQL Server build, 36 local scenarios, collector fixes and pending topology cases |
 | [Safety and execution](safety-and-execution.md) | Review permissions, database context and sensitive output |
 | [Validation evidence](validation.md) | Distinguish static checks from pending server execution tests |
 

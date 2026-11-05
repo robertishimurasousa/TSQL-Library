@@ -1,12 +1,12 @@
 /*
 TSQL Library — Modules matching a review term
 Context: database to inspect
-Target platform: SQL Server 2016+; execution against a server remains unvalidated.
+Target platform: SQL Server 2016+; see Validation for the tested build and platform limitations.
 Mode: read-only; SET/DECLARE affect only the session or batch.
 Permissions: Metadata visibility in the selected database; VIEW DEFINITION for complete visible definitions.
 Notes: Set an exact text fragment before use. Matches include comments and are review candidates, not proof of malicious behavior. Definitions stay hidden unless explicitly enabled and may contain secrets. Encrypted or invisible definitions cannot be searched.
 Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sql-modules-transact-sql
-Validation: static checks only; see docs/validation.md.
+Validation: Synthetic runtime scenarios passed on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 

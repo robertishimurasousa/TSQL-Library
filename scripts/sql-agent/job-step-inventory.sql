@@ -1,12 +1,12 @@
 /*
 TSQL Library — SQL Agent job and step metadata
 Context: msdb
-Target platform: SQL Server 2016+; execution against a server remains unvalidated.
+Target platform: SQL Server 2016+; see Validation for the tested build and platform limitations.
 Mode: read-only; SET/DECLARE affect only the session or batch.
 Permissions: Appropriate SQL Agent role and visibility of msdb job metadata.
 Notes: Does not run or change jobs. Step commands and output paths are hidden by default and may contain credentials when enabled. Job ownership is not creation authorship.
 Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-tables/dbo-sysjobsteps-transact-sql
-Validation: static checks only; see docs/validation.md.
+Validation: Synthetic runtime scenarios passed on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
 */
 SET NOCOUNT ON;
 
