@@ -1,13 +1,14 @@
 # Documentation
 
-TSQL Library contains 34 curated scripts and 951 attributed Glenn Berry diagnostic queries. Start with a purpose and choose the implementation for your platform. All documentation and contribution content use English.
+TSQL Library contains 50 curated scripts and 951 attributed Glenn Berry diagnostic queries. Start with a purpose and choose the implementation for your platform. All documentation and contribution content use English.
 
 ## Run and understand a query
 
 | Guide | Use it to |
 |---|---|
 | [Getting started](getting-started.md) | Download the library, choose a query and understand its header |
-| [Curated catalog](catalog.md) | Browse the 34 original scripts and synthetic examples |
+| [Administration workflows](getting-started.md#administration-workflows) | Investigate programmable objects, CLR, audit sources, SQL Agent and Always On; generate scoped commands |
+| [Curated catalog](catalog.md) | Browse the 50 curated scripts, command generators and synthetic examples |
 | [Glenn Berry queries by purpose](glenn-berry/by-purpose.md) | Find one of 951 imported queries by the problem you want to investigate |
 | [Glenn Berry platform guide](glenn-berry/README.md) | Select a version, review execution modes and understand upstream differences |
 | [Safety and execution](safety-and-execution.md) | Review permissions, database context and sensitive output |
@@ -18,7 +19,7 @@ TSQL Library contains 34 curated scripts and 951 attributed Glenn Berry diagnost
 | Reference | Contents |
 |---|---|
 | [Contributing](../CONTRIBUTING.md) | Scope, English content, metadata and publication checks |
-| [Complete catalog](../catalog.json) | Machine-readable metadata for all 985 SQL files |
+| [Complete catalog](../catalog.json) | Machine-readable metadata for all 1,001 SQL files |
 | [Reproduce the Glenn Berry import](glenn-berry/README.md#validation-and-updates) | Source checksums, generation and review procedure |
 | [Upstream references](references.md) | Author resources, Microsoft documentation and other tools |
 | [MIT license](../LICENSE) and [third-party notices](../THIRD_PARTY_NOTICES.md) | Licensing boundaries between curated code and imported queries |
@@ -26,6 +27,7 @@ TSQL Library contains 34 curated scripts and 951 attributed Glenn Berry diagnost
 ## Repository conventions
 
 - Curated files live directly under `scripts/<category>/`; synthetic language examples live under `examples/`.
+- `scripts/script-generation/` contains T-SQL queries that return administrative command text. Running a generator does not execute its output.
 - Imported files live under `scripts/<category>/glenn-berry/<purpose>/<platform>/`. Their three-digit prefix retains the upstream query number, not an execution order for the directory.
 - Names use English and `kebab-case.sql`. Each file has one diagnostic purpose, which can require multiple SQL statements.
 - Query headers describe context, platform, execution mode, permissions, limitations, sources and validation status. Read the original comments in imported queries as well.

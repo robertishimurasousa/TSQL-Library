@@ -1,8 +1,8 @@
 # Curated script catalog
 
-For the 951 imported diagnostic queries, use the [Glenn Berry purpose index](glenn-berry/by-purpose.md) or [platform guide](glenn-berry/README.md). [catalog.json](../catalog.json) covers all 985 SQL files.
+For the 951 imported diagnostic queries, use the [Glenn Berry purpose index](glenn-berry/by-purpose.md) or [platform guide](glenn-berry/README.md). [catalog.json](../catalog.json) covers all 1,001 SQL files.
 
-34 read-only scripts and synthetic examples. Target platform: SQL Server 2016+. Execution compatibility still requires validation.
+50 curated scripts, command generators and synthetic examples. Most target SQL Server 2016+; WSFC command generators require SQL Server 2017+. Read each header. Execution compatibility remains unvalidated.
 
 Select the indicated database before running a script. Each file documents its permissions and limitations. Microsoft links in the headers describe the queried objects.
 
@@ -48,3 +48,30 @@ Select the indicated database before running a script. Each file documents its p
 All files have received static review and passed the SQLFluff T-SQL parser. None is marked as execution-tested in SQL Server. `catalog.json` provides the same inventory in a structured format.
 
 DMV queries show a snapshot or cumulative counters, with visibility depending on permissions. An empty result does not prove health, absence of access or lack of usage.
+
+## Administration workflows and command generators
+
+These scripts use generic, unset parameters and contain no captured query results or environment-specific incident data. Most inspect metadata. The five command generators return T-SQL text only; executing their output is a separate administrative action.
+
+| Script | Purpose | Context |
+|---|---|---|
+| [clr-assembly-inventory](../scripts/security/clr-assembly-inventory.sql) | CLR assemblies and bound modules | database to inspect |
+| [module-review-candidates](../scripts/security/module-review-candidates.sql) | Modules matching a review term | database to inspect |
+| [audit-and-event-sources](../scripts/security/audit-and-event-sources.sql) | Existing audit, trace and Extended Events sources | master |
+| [login-password-change-status](../scripts/security/login-password-change-status.sql) | Current SQL login password-change metadata | master |
+| [default-trace-object-events](../scripts/security/default-trace-object-events.sql) | Object events in existing default trace files | master |
+| [current-connection-authentication](../scripts/security/current-connection-authentication.sql) | Authentication of the current connection | any database |
+| [job-step-inventory](../scripts/sql-agent/job-step-inventory.sql) | SQL Agent job and step metadata | msdb |
+| [automatic-seeding-status](../scripts/high-availability/automatic-seeding-status.sql) | Automatic seeding attempts and transfer progress | master on each replica |
+| [failover-readiness](../scripts/high-availability/failover-readiness.sql) | Local replica and database failover indicators | master on the intended WSFC secondary replica |
+| [listener-inventory](../scripts/high-availability/listener-inventory.sql) | Availability group listeners and endpoint configuration | master on an Always On instance |
+| [agent-job-state-commands](../scripts/script-generation/agent-job-state-commands.sql) | Generate a SQL Agent job state command | msdb on the source instance |
+| [trigger-state-commands](../scripts/script-generation/trigger-state-commands.sql) | Generate an enable or disable command for one trigger | database containing the trigger |
+| [database-execute-grant](../scripts/script-generation/database-execute-grant.sql) | Generate a scoped EXECUTE grant | database to configure |
+| [planned-failover-command](../scripts/script-generation/planned-failover-command.sql) | Generate a planned WSFC availability group failover command | master on the intended secondary replica |
+| [automatic-seeding-commands](../scripts/script-generation/automatic-seeding-commands.sql) | Generate automatic seeding commands for an existing replica | master on the current primary replica |
+| [programmable-objects-all-databases](../scripts/diagnostics/programmable-objects-all-databases.sql) | Programmable objects across visible databases | master; fresh session with no open transaction |
+
+For all-database trigger discovery, open `programmable-objects-all-databases.sql` and set `@ObjectCategory = N'TRIGGER'`. Leave it NULL to include procedures and functions. The second result set reports databases skipped or queried with errors; metadata visibility can still make a successful query incomplete. Definitions stay hidden by default.
+
+For command generation, provide exact object/group/job names rather than widening the scope. Review destination context, permissions and current state before executing any generated command. See the [workflow guide](getting-started.md#administration-workflows) and [execution boundaries](safety-and-execution.md#command-generators-and-cross-database-collection).

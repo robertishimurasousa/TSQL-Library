@@ -24,6 +24,14 @@ Queries may expose identities, paths, objects, topology and command text. The li
 
 Cache DMVs and counters may reset, lose rows or provide partial visibility. `latest-backups.sql` shows local history recorded in `msdb`; it does not prove recoverability or consolidate backups from all replicas. `replica-status.sql` depends on Always On and the queried replica. `job-status.sql` shows the latest recorded Agent session; it is not a service availability monitor.
 
+## Command generators and cross-database collection
+
+The five scripts in `scripts/script-generation/` return administrative command text; they never execute it. Provide exact target names, review the output and run it separately only in the intended context with the appropriate authority. Trigger/job state changes, grants, failover and seeding can affect applications even though their generators are read-only. A generated snapshot is not an execution-time health check. No forced/data-loss failover or automatic object removal is generated.
+
+`programmable-objects-all-databases.sql` is a separately reviewed collector. It requires `master` and a fresh session without an open transaction. It creates and drops two session-local temporary tables; existing same-named tables cause an error rather than being removed. Database names come from catalogs and pass through `QUOTENAME`; values are passed through `sp_executesql` parameters. The dynamic body reads metadata and inserts into the collector's temporary table. It does not execute discovered definitions or commands. Successful queries can still be incomplete because of metadata visibility; skipped/error status is returned separately.
+
+Definition text, identity fields, job commands and evidence paths are opt-in in these workflows. The source uses NULL target parameters instead of real names, addresses, paths or dates from an environment. This protects the published source, not the output of a future execution.
+
 ## Secrets and history
 
 Gitleaks uses its default rules and additional rules for literal passwords, T-SQL hashes and credentials in `cmdkey`. Contextual SQL checks also look for UNC paths, email addresses and literal IPv4 addresses. A clean result does not replace human review.
