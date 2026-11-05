@@ -2,7 +2,7 @@
 
 The curated collection accepts read-only queries and synthetic examples. Scripts that modify persistent state require a separate proposal covering scope and validation. The Glenn Berry import separately retains reviewed diagnostic calls, local temporary tables and session control flow, bound to exact source and output hashes; it does not widen the curated SQL policy.
 
-- Use UTF-8 without a BOM and `kebab-case.sql` filenames, with one purpose per file.
+- Write filenames, comments, documentation, issues and pull requests in English. Use UTF-8 without a BOM and `kebab-case.sql` filenames, with one purpose per file.
 - Document context, target platform, permissions, limitations, sources and validation evidence in the header. Update `catalog.json` and `docs/catalog.md`.
 - Use nullable parameters or synthetic examples. Do not include passwords, login hashes, tokens, archives, dumps, query results, customer names, endpoints or paths from real environments.
 - Review comments, filenames and commits as well. Do not bypass the scanner with broad exceptions or suppression comments.
