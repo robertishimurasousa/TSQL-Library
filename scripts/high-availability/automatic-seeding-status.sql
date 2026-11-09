@@ -6,7 +6,8 @@ Mode: read-only; SET/DECLARE affect only the session or batch.
 Permissions: VIEW SERVER STATE (2016–2019); VIEW SERVER PERFORMANCE STATE (2022+).
 Notes: Collect separately on source and destination. Failure descriptions need correlation with existing error logs. Empty transfer rows can mean completed, failed or inactive seeding; they do not prove health.
 Reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-hadr-automatic-seeding
-Validation: Empty-state execution only on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. Other versions remain untested.
+Physical transfer reference: https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-hadr-physical-seeding-stats
+Validation: The earlier projection had empty-state execution only on SQL Server 2022 build 16.0.4305.5, Linux amd64 emulated on Apple Silicon; see docs/runtime-validation.md. The expanded projection is static-only; actual seeding and other versions remain untested.
 */
 SET NOCOUNT ON;
 
@@ -25,8 +26,27 @@ WHERE @AvailabilityGroupName IS NULL OR ag.name = @AvailabilityGroupName
 ORDER BY s.start_time DESC;
 
 -- This separate result is instance-wide; database names need not identify an AG uniquely.
-SELECT local_database_name, role_desc, internal_state_desc,
-       transferred_size_bytes, database_size_bytes,
-       transfer_rate_bytes_per_second, start_time_utc, end_time_utc
+-- The *_mb aliases use binary megabytes (MiB); percentage and completion time are estimates.
+SELECT
+    local_database_name AS banco,
+    remote_machine_name AS servidor_remoto,
+    role_desc AS papel,
+    internal_state_desc AS status,
+    CAST(transferred_size_bytes / 1048576.0 AS decimal(18,2))
+        AS transferido_mb,
+    CAST(database_size_bytes / 1048576.0 AS decimal(18,2))
+        AS tamanho_mb,
+    CAST(
+        100.0 * transferred_size_bytes
+        / NULLIF(database_size_bytes, 0)
+        AS decimal(18,2)
+    ) AS percentual_estimado,
+    CAST(transfer_rate_bytes_per_second / 1048576.0 AS decimal(18,2))
+        AS velocidade_mb_s,
+    start_time_utc AS inicio_utc,
+    estimate_time_complete_utc AS previsao_fim_utc,
+    end_time_utc AS fim_utc,
+    failure_code AS codigo_erro,
+    failure_message AS mensagem_erro
 FROM sys.dm_hadr_physical_seeding_stats
 ORDER BY start_time_utc DESC;

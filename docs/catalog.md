@@ -62,7 +62,7 @@ These scripts use generic, unset parameters and contain no captured query result
 | [default-trace-object-events](../scripts/security/default-trace-object-events.sql) | Object events in existing default trace files | master |
 | [current-connection-authentication](../scripts/security/current-connection-authentication.sql) | Authentication of the current connection | any database |
 | [job-step-inventory](../scripts/sql-agent/job-step-inventory.sql) | SQL Agent job and step metadata | msdb |
-| [automatic-seeding-status](../scripts/high-availability/automatic-seeding-status.sql) | Automatic seeding attempts and transfer progress | master on each replica |
+| [automatic-seeding-status](../scripts/high-availability/automatic-seeding-status.sql) | Automatic seeding attempts, remote server, MiB transfer progress/rate, estimated percentage/completion and failure details | master on each replica |
 | [failover-readiness](../scripts/high-availability/failover-readiness.sql) | Local replica and database failover indicators | master on the intended WSFC secondary replica |
 | [listener-inventory](../scripts/high-availability/listener-inventory.sql) | Availability group listeners and endpoint configuration | master on an Always On instance |
 | [agent-job-state-commands](../scripts/script-generation/agent-job-state-commands.sql) | Generate a SQL Agent job state command | msdb on the source instance |
